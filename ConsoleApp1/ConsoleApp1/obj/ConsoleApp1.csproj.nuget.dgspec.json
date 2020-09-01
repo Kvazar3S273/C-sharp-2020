@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ba2H\\source\\repos\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {}
+    "D:\\0 3x4\\000 Роздрук\\с++\\0 Repository\\C-sharp-2020\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ba2H\\source\\repos\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {
+    "D:\\0 3x4\\000 Роздрук\\с++\\0 Repository\\C-sharp-2020\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ba2H\\source\\repos\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectUniqueName": "D:\\0 3x4\\000 Роздрук\\с++\\0 Repository\\C-sharp-2020\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
         "projectName": "ConsoleApp1",
-        "projectPath": "C:\\Users\\Ba2H\\source\\repos\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectPath": "D:\\0 3x4\\000 Роздрук\\с++\\0 Repository\\C-sharp-2020\\ConsoleApp1\\ConsoleApp1\\ConsoleApp1.csproj",
         "packagesPath": "C:\\Users\\Ba2H\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ba2H\\source\\repos\\ConsoleApp1\\ConsoleApp1\\obj\\",
+        "outputPath": "D:\\0 3x4\\000 Роздрук\\с++\\0 Repository\\C-sharp-2020\\ConsoleApp1\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ba2H\\AppData\\Roaming\\NuGet\\NuGet.Config",
