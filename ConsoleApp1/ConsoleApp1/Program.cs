@@ -67,6 +67,8 @@ namespace ConsoleApp1
                 Console.WriteLine($"length = { Math.Abs(ax) }, width = { Math.Abs(bx) } mm");
             }
             Console.ResetColor();
+            Console.ResetColor();
+
         }
     }
 }
