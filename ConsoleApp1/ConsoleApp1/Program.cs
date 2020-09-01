@@ -6,7 +6,6 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             Console.WriteLine("Enter length of wall/floor, m");
             string _a = Console.ReadLine();                      //length of floor in meters /довжина підлоги в метрах
             Console.WriteLine("Enter width of wall/floor, m");
@@ -65,7 +64,7 @@ namespace ConsoleApp1
                 int ax = (int)((ka_entire - a / l) * l);
                 int bx = (int)((kb_entire - b / l) * l);
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"length= { Math.Abs(ax) }, width= { Math.Abs(bx) }");
+                Console.WriteLine($"length = { Math.Abs(ax) }, width = { Math.Abs(bx) } mm");
             }
             Console.ResetColor();
         }
