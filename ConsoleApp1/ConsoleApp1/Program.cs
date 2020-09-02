@@ -41,6 +41,7 @@ namespace ConsoleApp1
             if (a * b < l * l)
             {
                 Console.WriteLine("The size of the floor cannot be smaller than the size of the tile!");
+                return;
             }
             else
             {
