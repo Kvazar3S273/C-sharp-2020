@@ -9,7 +9,7 @@ namespace ConsoleApp2
         string patronymic;
         int group;
         DateTime date;
-
+        //--------
         public string Surname
         {
             set => this.surname = value;
