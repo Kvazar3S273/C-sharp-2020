@@ -6,7 +6,7 @@ namespace House
 {
     interface IWorker
     {
-        public string NamePart { get; set; }
+        public string NameWorker { get; set; }
         public void Working()
         {
             Console.WriteLine("The employee is working");
@@ -19,7 +19,7 @@ namespace House
 
     class Worker : IWorker
     {
-        public string NamePart { get; set; } = "Worker";
+        public string NameWorker { get; set; } = "Worker";
         public void Working()
         {
             Console.WriteLine("The worker is working");
@@ -36,7 +36,7 @@ namespace House
 
     class Brigadir : IWorker
     {
-        public string NamePart { get; set; } = "Brigadir";
+        public string NameWorker { get; set; } = "Brigadir";
         public void Working()
         {
             Console.WriteLine("The brigadir is working");
@@ -51,9 +51,9 @@ namespace House
         }
     }
 
-    class Team : IWorker
+    class Team 
     {
-        public string NamePart { get; set; } = "Team";
+        //public string NameWorker { get; set; } = "Team";
         public void Working()
         {
             Console.WriteLine("The team is working");
