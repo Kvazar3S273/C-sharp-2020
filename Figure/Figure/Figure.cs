@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Figure
+﻿namespace Figure
 {
     public abstract class Figure
     {
@@ -12,6 +8,7 @@ namespace Figure
             _name = name;
         }
         public abstract void Square();
+        public abstract double GetSquare();
         public abstract void Perimeter();
     }
 }
