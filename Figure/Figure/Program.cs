@@ -13,7 +13,7 @@ namespace Figure
             Console.WriteLine();
             Quadrate qua = new Quadrate("Quadro", 17);
             qua.Perimeter();
-            qua.Square();
+            //qua.Square();
 
         }
     }
