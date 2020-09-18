@@ -12,19 +12,13 @@ namespace Figure
         {
             _name = name;
         }
-        public void Square(Figure [] arr)
+        public double Square(Figure [] arr)
         {
-            //foreach (var item in arr)
-            //{
-            //    _sq += item.GetSquare();
-            //}
-
             for (int i = 0; i < 3; i++)
             {
                 _sq += arr[i].GetSquare();
-
             }
-            Console.WriteLine($"Square of polygon {_name} = {_sq}");
+            return _sq;
         }
     }
 }

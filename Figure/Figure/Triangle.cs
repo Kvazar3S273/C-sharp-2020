@@ -30,6 +30,8 @@ namespace Figure
         }
         public override double GetSquare()
         {
+            _per = _a + _b + _c;    //шукаємо периметр
+            _sq = Math.Round(Math.Sqrt(_per / 2 * (_per / 2 - _a) * (_per / 2 - _b) * (_per / 2 - _c)), 2); //формула Герона
             return _sq;
         }
     }

@@ -27,7 +27,7 @@ namespace Figure
             par.Perimeter();
             par.Square();
             Console.WriteLine();
-            Trapeze trap = new Trapeze("Trap", 20, 30, 18, 22);
+            Trapeze trap = new Trapeze("Tramp", 20, 30, 18, 22);
             trap.Perimeter();
             trap.Square();
             Console.WriteLine();
@@ -44,12 +44,19 @@ namespace Figure
             //--------------доробити--------------
             Figure[] arr = new Figure [3] ;
             arr[0] = new Rectangle("Re", 18, 25);
-            arr[1] = new Triangle("Tri", 20, 15, 12);
+            arr[1] = new Triangle("Tri", 15, 15, 14);
+            //arr[1] = new Circle("Cr", 20);
+
             arr[2] = new Rhomb("Rho", 30, 40);
 
             Polygon pol = new Polygon("Polli");
-            pol.Square(arr);
-            pol.Square(arr);
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($"Square of figure [{i}] = {arr[i].GetSquare()}");
+            }
+            
+            Console.WriteLine($"Square of poligon = {pol.Square(arr)}");
 
             Console.WriteLine();
         }

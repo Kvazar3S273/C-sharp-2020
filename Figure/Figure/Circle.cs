@@ -29,6 +29,7 @@ namespace Figure
         }
         public override double GetSquare()
         {
+            _sq = Math.Round(_r * _r * Math.PI, 2);      //шукаємо площу
             return _sq;
         }
     }

@@ -32,6 +32,7 @@ namespace Figure
         }
         public override double GetSquare()
         {
+            _sq = Math.Round(_a * _b * Math.Sin(_alpha), 2);      //шукаємо площу
             return _sq;
         }
     }

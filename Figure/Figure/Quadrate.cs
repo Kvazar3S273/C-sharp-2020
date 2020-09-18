@@ -26,6 +26,7 @@ namespace Figure
         }
         public override double GetSquare()
         {
+            _sq = _a * _a;      //шукаємо площу
             return _sq;
         }
 

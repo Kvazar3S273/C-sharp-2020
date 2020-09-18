@@ -32,12 +32,13 @@ namespace Figure
         public override void Square()
         {
             _h = Math.Sqrt(Math.Pow(_c, 2) - Math.Pow((Math.Pow((_a - _b), 2) + Math.Pow(_c, 2) - Math.Pow(_d, 2)) / (2 * (_a - _b)), 2));
-
             _sq = Math.Round(((_a + _b) / 2) * _h, 2);      //шукаємо площу
             Console.WriteLine($"Square of trapeze {_name} = {_sq}");
         }
         public override double GetSquare()
         {
+            _h = Math.Sqrt(Math.Pow(_c, 2) - Math.Pow((Math.Pow((_a - _b), 2) + Math.Pow(_c, 2) - Math.Pow(_d, 2)) / (2 * (_a - _b)), 2));
+            _sq = Math.Round(((_a + _b) / 2) * _h, 2);      //шукаємо площу
             return _sq;
         }
     }
