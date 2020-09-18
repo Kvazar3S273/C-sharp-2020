@@ -49,6 +49,7 @@ namespace Figure
 
             Polygon pol = new Polygon("Polli");
             pol.Square(arr);
+            pol.Square(arr);
 
             Console.WriteLine();
         }
