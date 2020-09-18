@@ -1,20 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace HouseBuilding
 {
     public interface IPart
     {
-        // назва частини, задається ззовні
-        string Name { get; set; }
-        // статус готовності частини - заповнюється робітником у методі DoWork
-        bool IsReady { get; set; }
+        string Name { get; set; }   //назва частини, задається ззовні
+        
+        bool IsReady { get; set; }  //статус готовності частини - заповнюється робітником у методі DoWork
     }
 
-    // Фундамент
-    public enum BasementType { String, Complex, Column, Solid, Weld }
+    //Фундамент
+    public enum BasementType    //тип фундамента
+    { 
+        String,
+        Complex, 
+        Column, 
+        Solid, 
+        Weld 
+    }
 
     public class Basement : IPart
     {
@@ -24,22 +27,28 @@ namespace HouseBuilding
         public bool IsReady { get; set; }
     }
 
-    // Стіна
-    public class Wall : IPart
+    //Стіна
+    public class Wall : IPart   
     {
         public string Name { get; set; }
         public bool IsReady { get; set; }
     }
 
-    // Вікно
+    //Вікно
     public class Window : IPart
     {
         public string Name { get; set; }
         public bool IsReady { get; set; }
     }
 
-    // Двері
-    public enum DoorType { Glass, Metal, Wood, Profile }
+    //Двері
+    public enum DoorType    //тип дверей
+    { 
+        Glass, 
+        Metal, 
+        Wood, 
+        Profile 
+    }
 
     public class Door : IPart
     {
@@ -49,7 +58,7 @@ namespace HouseBuilding
         public bool IsReady { get; set; }
     }
 
-    // Дах
+    //Дах
     public class Roof : IPart
     {
         public string Name { get; set; }
@@ -58,12 +67,11 @@ namespace HouseBuilding
 
     public class House : IPart
     {
-        // назва будинку
-        public string Name { get; set; }
-        // готовність будинку - заповнюється бригадиром, якщо усі частини будинку готові
-        public bool IsReady { get; set; }
+        public string Name { get; set; }    //назва будинку
+        
+        public bool IsReady { get; set; }   //готовність будинку - заповнюється бригадиром, якщо усі частини будинку готові
 
-        // перелік частин будинку
+        //перелік частин будинку
         public Basement Basement { get; set; }
 
         public Wall Wall1 { get; set; }
@@ -80,7 +88,7 @@ namespace HouseBuilding
 
         public Roof Roof { get; set; }
 
-        // допоміжний метод, що перелічує усі частини будинку повертамючи їх у масиві
+        //масив усіх частин будинку
         public IPart[] Parts
         {
             get
@@ -102,14 +110,13 @@ namespace HouseBuilding
             }
         }
 
-        public bool Validate()
+        public bool Validate()  //перевіряємо проект, щоб у ньому було все заповнено
         {
-            // перевіряємо проект, щоб у ньому було усе заповнено
             foreach (var part in Parts)
             {
                 if (part == null)
                 {
-                    Console.WriteLine("House project is not complete");
+                    Console.WriteLine("Проект будинку не завершений!");
                     return false;
                 }
             }
