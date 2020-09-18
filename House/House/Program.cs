@@ -47,6 +47,11 @@ namespace HouseBuilding
                     new TeamLeader { Name = "Степан Петрович" },
                 },
             };
+            Console.WriteLine("**************************************");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"\tБудуємо будинок {house.Name}");
+            Console.ResetColor();
+            Console.WriteLine("**************************************");
 
             team.BuildHouse(house);
         }

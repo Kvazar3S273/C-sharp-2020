@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace HouseBuilding
 {
@@ -22,12 +23,12 @@ namespace HouseBuilding
                 {
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine($"Збудовано: {part.Name} будівельником {Name}");
+                    Thread.Sleep(250);
                     Console.ResetColor();
                     part.IsReady = true;    //частина готова
                     return part;    //повертаємо збудовану частину
                 }
             }
-
             //якщо будинок завершено - повертаємо null - роботи більше немає
             Console.WriteLine($"Немає роботи для {Name}");
             return null;
@@ -137,7 +138,8 @@ namespace HouseBuilding
                     if (donePart != null)
                         someWorkWereDone = true;
                 }
-
+                Console.WriteLine("Натисніть будь-яку клавішу для продовження");
+                Console.ReadKey();
                 //якщо усі працівники відпрацювали день і нічого не зробили - значить усі роботи завершені, 
                 //і виходимо із процесу будівництва
                 if (!someWorkWereDone)
