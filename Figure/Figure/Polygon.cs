@@ -12,7 +12,7 @@ namespace Figure
         {
             _name = name;
         }
-        public double Square(Figure [] arr)
+        public double Square(Figure [] arr) //шукаємо повну площу всіх фігур
         {
             for (int i = 0; i < 3; i++)
             {
