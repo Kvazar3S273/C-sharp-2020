@@ -37,7 +37,14 @@ namespace Fraction
             f.down = first.down * second.up;
             return f;
         }
-
+        public static bool operator ==(Fraction first, Fraction second)
+        {
+            return first.up / first.down == second.up / second.down;
+        }
+        public static bool operator !=(Fraction first, Fraction second)
+        {
+            return first.up / first.down != second.up / second.down;
+        }
 
     }
 }
