@@ -82,6 +82,14 @@ namespace Fraction
                 f2.Show();
             }
             Console.WriteLine();
+
+            Console.WriteLine("Введіть десятковий дріб");
+            double dd = double.Parse(Console.ReadLine());
+            Console.WriteLine(dd);
+            Fraction fd = new Fraction();
+            fd = fd.DoubleToFraction(dd);
+            fd.Show();
+            Console.WriteLine();
         }
     }
 }
