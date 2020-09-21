@@ -9,7 +9,7 @@ namespace Fraction
         {
             Console.OutputEncoding = Encoding.Unicode;
             Console.InputEncoding = Encoding.Unicode;
-           
+
             Console.WriteLine("Введіть чисельник і через ентер знаменник для першого дробу");
             int num1 = int.Parse(Console.ReadLine());
             int den1 = int.Parse(Console.ReadLine());
@@ -83,12 +83,23 @@ namespace Fraction
             }
             Console.WriteLine();
 
-            Console.WriteLine("Введіть десятковий дріб");
-            double dd = double.Parse(Console.ReadLine());
-            Console.WriteLine(dd);
-            Fraction fd = new Fraction();
-            fd = fd.DoubleToFraction(dd);
-            fd.Show();
+           
+            Console.WriteLine("\n\nЗавдання з умови задачі:\n");
+            Fraction ff = new Fraction(3, 4);
+            int a = 10;
+            Fraction f11 = ff * a;
+            Console.Write("Результат добутку 3/4 * 10 = ");
+            f11.Show();
+            Console.WriteLine();
+            Fraction f22 = a * ff;
+            Console.Write("Результат добутку 10 * 3/4 = ");
+            f22.Show();
+            Console.WriteLine();
+            double d = 1.5;
+            Fraction f33 = ff + d;
+            Console.Write("Результат додавання 3/4 + 1,5 = ");
+            f33.Show();
+
             Console.WriteLine();
         }
     }
