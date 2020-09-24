@@ -14,7 +14,7 @@ namespace Parking
         string brand;
         string number;
         string color;
-        private Timer timer = new Timer();
+        //private Timer timer = new Timer();
         public string GetBrand()
         {
             return this.brand;
@@ -27,10 +27,10 @@ namespace Parking
         {
             return this.color;
         }
-        public Timer GetTimer()
-        {
-            return this.timer;
-        }
+        //public Timer GetTimer()
+        //{
+        //    return this.timer;
+        //}
         public Car()
         {
             Random rnd = new Random();
