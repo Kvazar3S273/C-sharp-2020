@@ -14,7 +14,7 @@ namespace Parking
         string brand;
         string number;
         string color;
-        //private Timer timer = new Timer();
+        private Timer timer = new Timer();
         public string GetBrand()
         {
             return this.brand;
@@ -27,13 +27,13 @@ namespace Parking
         {
             return this.color;
         }
-        //public Timer GetTimer()
-        //{
-        //    return this.timer;
-        //}
+        public Timer GetTimer()
+        {
+            return this.timer;
+        }
+        Random rnd = new Random();
         public Car()
         {
-            Random rnd = new Random();
 
             int num = rnd.Next(0, 4);   //генеруємо порядковий номер, по якому будемо з Енама брати перші літери для номера
             string letterFirst = Enum.GetName(typeof(Numbers), num);    //отримуємо перші дві літери
