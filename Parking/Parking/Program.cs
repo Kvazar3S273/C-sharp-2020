@@ -10,21 +10,24 @@ namespace Parking
             Console.OutputEncoding = Encoding.Unicode;
             Console.InputEncoding = Encoding.Unicode;
 
-            Console.WriteLine("Hello stupids!");
+            Car car = new Car();
+            Ticket ticket = new Ticket(car);
 
-            Timer time = new Timer();
-            Console.WriteLine($"Час заїзду на парковку: {time.GetTimeToParking()}");
-            Console.WriteLine($"Час виїзду з парковки: {time.GetTimeFromParking()}");
-
-            Console.WriteLine($"Оплачений час: {time.GetPayTime()}");
-            Console.WriteLine($"Штрафний час: {time.GetOverdueTime()}");
+            Console.WriteLine($"Автомобіль {car.GetBrand()} кольору {car.GetColor()} з номером {car.GetNumber()}");
+            Console.WriteLine($"Час заїзду на парковку: {car.GetTimer().GetTimeToParking()}");
+            Console.WriteLine($"Час виїзду з парковки: {car.GetTimer().GetTimeFromParking()}");
+            Console.WriteLine($"Оплачений час: {car.GetTimer().GetPayTime()}");
+            Console.WriteLine($"Штрафний час: {car.GetTimer().GetOverdueTime()}");
             Console.WriteLine("\n\n");
-            Timer time1 = new Timer();
-            Console.WriteLine($"Час заїзду на парковку: {time1.GetTimeToParking()}");
-            Console.WriteLine($"Час виїзду з парковки: {time1.GetTimeFromParking()}");
 
-            Console.WriteLine($"Оплачений час: {time1.GetPayTime()}");
-            Console.WriteLine($"Штрафний час: {time1.GetOverdueTime()}");
+            ticket.ShowTicket();
+
+            //Timer time1 = new Timer();
+            //Console.WriteLine($"Час заїзду на парковку: {time1.GetTimeToParking()}");
+            //Console.WriteLine($"Час виїзду з парковки: {time1.GetTimeFromParking()}");
+
+            //Console.WriteLine($"Оплачений час: {time1.GetPayTime()}");
+            //Console.WriteLine($"Штрафний час: {time1.GetOverdueTime()}");
 
         }
     }
