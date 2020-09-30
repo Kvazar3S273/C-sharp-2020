@@ -20,7 +20,7 @@ namespace Parking
                 Car car = new Car();
                 pBook.AddCar(car);
                 Console.WriteLine($"Авто {car.GetBrand()} кольору {car.GetColor()} з ДН {car.GetNumber()} поставлено на парковку");
-                Console.WriteLine($"Було оплачено стояночного часу: {car.GetTimer().PayTime}");
+                Console.WriteLine($"Наперед було оплачено часу: {car.GetTimer().PayTime}");
                 return true;
             }
             else
