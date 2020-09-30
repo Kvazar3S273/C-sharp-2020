@@ -4,7 +4,7 @@ namespace Parking
 {
     public enum Brands { Audi, Skoda, Ford, Jeep, Renault, Ferrari, Tesla, ZAZ, Mazeratti, Bentley }
     public enum Numbers { AA, AB, BB, BC, CD, BD, EF, FF, DR, RA }
-    public enum Colors { grey, black, white, red, blue, brown }
+    public enum Colors { сірий, чорний, білий, червоний, синій, коричневий }
 
     class Car
     {
