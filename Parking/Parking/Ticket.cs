@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Parking
 {
@@ -49,11 +47,19 @@ namespace Parking
             return this.PayTime;
         }
 
+        public int GetMinutesPayTime()
+        {
+            return this.PayTime.Days * 1440 + this.PayTime.Hours * 60 + this.PayTime.Minutes;
+        }
+
         public TimeSpan GetOverdueTime()
         {
             return this.OverdueTime;
         }
-
+        public int GetMinutesOverdueTime()
+        {
+            return this.OverdueTime.Days * 1440 + this.OverdueTime.Hours * 60 + this.OverdueTime.Minutes;
+        }
         public double GetOverpay()
         {
             int days = this.OverdueTime.Days;
@@ -81,33 +87,33 @@ namespace Parking
             this.FromParkingTime = car.GetTimer().GetTimeFromParking();
             this.PayTime = car.GetTimer().GetPayTime();
             this.OverdueTime = car.GetTimer().GetOverdueTime();
-            //this.parkerName = Parker.parkerName;
+            this.parkerName = Parker.parkerName;
         }
         public void ShowTicket()
         {
-            Console.WriteLine("==================================");
+            Console.WriteLine("======================================");
             Console.WriteLine();
             Console.WriteLine("       ТОВ \"АЛЬЯНС-ПАРКІНГ\"          ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("             ПАРКОВКА                ");
             Console.ResetColor();
             Console.WriteLine("    м.Рівне, вул. Степова, 20        ");
-            //Console.WriteLine($"Паркувальник: {parkerName}");
+            Console.WriteLine($"  Паркувальник: {parkerName}");
             Console.WriteLine("                                   ");
             Console.WriteLine($"  Автомобіль: {brand}\t            ");
             Console.WriteLine($"  Колір: {color}\t            ");
             Console.WriteLine($"  Держ. номер: {number}");
             Console.WriteLine($"  Час заїзду: {ToParkingTime}");
             Console.WriteLine($"  Час виїзду: {FromParkingTime}");
-            Console.WriteLine($"  Оплачений час: {PayTime}");
-            Console.WriteLine($"  Штрафний час: {OverdueTime}");
+            Console.WriteLine($"  Оплачений час: {PayTime} = {GetMinutesPayTime()} хв");
+            Console.WriteLine($"  Штрафний час: {OverdueTime} = {GetMinutesOverdueTime()} хв");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"  Штраф: {GetOverpay()} грн");
             Console.ResetColor();
             Console.WriteLine("");
             Console.WriteLine($"    Дата: {FromParkingTime}");
             Console.WriteLine();
-            Console.WriteLine("==================================");
+            Console.WriteLine("======================================");
         }
         static public int OverPayFirstHour { get; set; } = 25;
         static public int OverPayNextHour { get; set; } = 10;

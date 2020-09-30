@@ -2,9 +2,9 @@
 
 namespace Parking
 {
-    public enum Brands { Audi, Skoda, Ford, Jeep, Renault, Ferrari, Tesla, ZAZ, Mazeratti, Bentley }
+    public enum Brands { Volvo, Skoda, Lexus, Iveco, Honda, Dodge, Tesla, Smart, Dacia, Mazda }
     public enum Numbers { AA, AB, BB, BC, CD, BD, EF, FF, DR, RA }
-    public enum Colors { сірий, чорний, білий, червоний, синій, коричневий }
+    public enum Colors { сірий, чорний, білий, жовтий, синій, срібний }
 
     class Car
     {
@@ -37,7 +37,7 @@ namespace Parking
             string letterFirst = Enum.GetName(typeof(Numbers), num);    //отримуємо перші дві літери
             num = rnd.Next(5, 9);   //генеруємо порядковий номер, по якому будемо з Енама брати останні літери для номера
             string letterEnd = Enum.GetName(typeof(Numbers), num);      //отримуємо останні дві літери
-            int RNDnumber = rnd.Next(000, 999);                         //генеруємо цифри номера
+            int RNDnumber = rnd.Next(100, 999);                         //генеруємо цифри номера
             this.number = letterFirst + "-" + RNDnumber + "-" + letterEnd;  //з"єднуємо докупи літери і цифри
 
             num = rnd.Next(0, 9);   //генеруємо порядковий номер, по якому будемо з Енама брати марку авто
