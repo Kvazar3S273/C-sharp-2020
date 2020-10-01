@@ -7,13 +7,13 @@ namespace Parking
     class Parker
     {
         public static string parkerName;
-        ParkingBook pBook = ParkingBook.GetInstance();
+        ParkingBook pBook = ParkingBook.GetInstance();  //створюємо екземпляр паркувальниї книги
 
-        public void ViewFullStatistic()   
+        public void ViewFullStatistic()     //отримати повну статистику
         {
             pBook.FullStatistic();
         }
-        public bool AddCarToParking() 
+        public bool AddCarToParking()       //додати машину на парковку
         {
             if (pBook.ParkingNotFull())
             {
@@ -40,7 +40,12 @@ namespace Parking
             pBook.ParkingInfo();
         }
 
-        public void DeleteCarFromParking(int place)   
+        public void ParkingStatistic()
+        {
+            pBook.FullStatistic();
+        }
+
+        public void DeleteCarFromParking(int place)     //видалити машину з парковки
         {
             Car car = pBook.DelCar(place);
             if (car == null)
@@ -53,7 +58,7 @@ namespace Parking
             pBook.AddToTicket(ticket);
         }
 
-        public void ShowAllCars()
+        public void ShowAllCars()           //показати список машин на парковці
         {
             Console.WriteLine("======================================================================================");
             Console.WriteLine("| Місце |    Марка    |  Колір  |  держ. номер   |     Час заїзду    | Оплачений час |");

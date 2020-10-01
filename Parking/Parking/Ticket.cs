@@ -47,7 +47,7 @@ namespace Parking
             return this.PayTime;
         }
 
-        public int GetMinutesPayTime()
+        public int GetMinutesPayTime()      //обрахунок оплачених хвилин паркування
         {
             return this.PayTime.Days * 1440 + this.PayTime.Hours * 60 + this.PayTime.Minutes;
         }
@@ -56,11 +56,11 @@ namespace Parking
         {
             return this.OverdueTime;
         }
-        public int GetMinutesOverdueTime()
+        public int GetMinutesOverdueTime()  //обрахунок штрафних хвилин
         {
             return this.OverdueTime.Days * 1440 + this.OverdueTime.Hours * 60 + this.OverdueTime.Minutes;
         }
-        public double GetOverpay()
+        public double GetOverpay()          //обрахунок штрафу за протерміновані години по тарифу
         {
             int days = this.OverdueTime.Days;
             int hours = this.OverdueTime.Hours;
@@ -78,7 +78,7 @@ namespace Parking
             return this.overpay;
         }
 
-        public Ticket(Car car)
+        public Ticket(Car car)          //конструктор класу квитка
         {
             this.brand = car.GetBrand();
             this.number = car.GetNumber();
@@ -89,7 +89,7 @@ namespace Parking
             this.OverdueTime = car.GetTimer().GetOverdueTime();
             this.parkerName = Parker.parkerName;
         }
-        public void ShowTicket()
+        public void ShowTicket()        //друкуємо квиток
         {
             Console.WriteLine("======================================");
             Console.WriteLine();
@@ -115,8 +115,8 @@ namespace Parking
             Console.WriteLine();
             Console.WriteLine("======================================");
         }
-        static public int OverPayFirstHour { get; set; } = 25;
-        static public int OverPayNextHour { get; set; } = 10;
+        static public int OverPayFirstHour { get; set; } = 25;  //тариф за штрафну першу годину
+        static public int OverPayNextHour { get; set; } = 10;   //тариф за штрафну кожну наступну годину
 
     }
 }

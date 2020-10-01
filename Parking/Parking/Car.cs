@@ -8,10 +8,10 @@ namespace Parking
 
     class Car
     {
-        private string brand;
-        private string number;
-        private string color;
-        private Timer timer = new Timer();
+        private string brand;               //марка машини
+        private string number;              //державний номер
+        private string color;               //колір машини
+        private Timer timer = new Timer();  //об"єкт класу Таймера
         public string GetBrand()
         {
             return this.brand;

@@ -11,12 +11,12 @@ namespace Parking
 
         }
 
-        private const int size = 12;
-        private int numCars = 0;    
-        private List<Ticket> tickets = new List<Ticket>();
-        private Car[] cars = new Car[size];
+        private const int size = 12;                            //розмір парковки - 12 місць
+        private int numCars = 0;                                //лічильник кількості машин на парковці
+        private List<Ticket> tickets = new List<Ticket>();      //список виписаних квитанцій
+        private Car[] cars = new Car[size];                     //масив машин, присутніх на парковці
 
-        public bool ParkingNotFull()   
+        public bool ParkingNotFull()                //перевірка чи не заповнена повністю парковка
         {
             if (numCars == size) 
             {
@@ -28,7 +28,7 @@ namespace Parking
             }
         }
 
-        public void AddCar(Car car) 
+        public void AddCar(Car car)                 //додати машину на парковку
         {
             if (ParkingNotFull())
             {
@@ -47,21 +47,21 @@ namespace Parking
                 Console.WriteLine("Парковка заповнена! Вільних місць немає!");
             }
         }
-        public void AddToTicket(Ticket ticket) 
+        public void AddToTicket(Ticket ticket)      //додати квитанцію
         {
             tickets.Add(ticket);
         }
 
-        public Car DelCar(int place)    
+        public Car DelCar(int place)                //видалити машину з парковки
         {
-            place--;
+            place--;                                //зменшуємо число введеного місця, т.як нумерація йде з нуля
             if (cars[place] == null)
             {
                 return null;
             }
             if (place >= 0 && place < size)
             {
-                Car car = cars[place];
+                Car car = cars[place];              
                 cars[place] = null;
                 numCars--;
                 return car;
@@ -69,7 +69,7 @@ namespace Parking
             return null;
         }
 
-        public double GetAllOverPay()  
+        public double GetAllOverPay()               //отримати всі штрафи
         {
             double allOverPay = 0;
             foreach (var tik in tickets)
@@ -79,13 +79,13 @@ namespace Parking
             return allOverPay;
         }
 
-        public void ParkingInfo() 
+        public void ParkingInfo()                   //інформація про вільні місця на парковці
         {
             Console.WriteLine($"Кількість вільних місць - {size - numCars} з {size}");
             Console.WriteLine($"Кількість зайнятих місць - {numCars} з {size}");
         }
 
-        public void FullStatistic()
+        public void FullStatistic()                 //повна статистика по проданих парко-годинах і виписаних штрафах
         {
             int fullHours = 0;    
             int fullOverHours = 0;   
@@ -103,12 +103,12 @@ namespace Parking
             Console.WriteLine($"Всього виписано штрафів: {fullOverpay} грн");
         }
 
-        public int GetSize()
+        public int GetSize()                        
         {
             return size;
         }
 
-        public static ParkingBook GetInstance()
+        public static ParkingBook GetInstance()     //отримати екземпляр паркувальної книги (для сінглтона)
         {
             if (parkingBook == null) 
             {
@@ -117,7 +117,7 @@ namespace Parking
             return parkingBook;
         }
 
-        public Car this[int a]
+        public Car this[int a]                      
         {
             get
             {
