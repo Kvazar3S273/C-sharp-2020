@@ -19,13 +19,17 @@ namespace Parking
             {
                 Car car = new Car();
                 pBook.AddCar(car);
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine($"Авто {car.GetBrand()} кольору {car.GetColor()} з ДН {car.GetNumber()} поставлено на парковку");
                 Console.WriteLine($"Наперед було оплачено часу: {car.GetTimer().PayTime}");
+                Console.ResetColor();
                 return true;
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Парковка заповнена! Вільних місць немає!");
+                Console.ResetColor();
                 return false;
             }
         }
@@ -50,7 +54,9 @@ namespace Parking
             Car car = pBook.DelCar(place);
             if (car == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red; 
                 Console.WriteLine("Такого авто немає на парковці!");
+                Console.ResetColor();
                 return;
             }
             Ticket ticket = new Ticket(car);
@@ -78,7 +84,9 @@ namespace Parking
                 }
             }
             Console.WriteLine("======================================================================================");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"Паркувальник: {Parker.parkerName}");
+            Console.ResetColor();
         }
     }
 }

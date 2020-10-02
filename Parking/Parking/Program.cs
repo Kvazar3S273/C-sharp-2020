@@ -23,39 +23,39 @@ namespace Parking
                     Console.Clear();
                     if (counter == 1)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                     }
-                    Console.WriteLine("1. Авторизація паркувальника");
+                    Console.WriteLine("\n\n\n\n\t* Авторизація паркувальника");
                     Console.ResetColor();
                     if (counter == 2)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                     }
-                    Console.WriteLine("2. Поставити автомобіль на парковку");
+                    Console.WriteLine("\t* Поставити автомобіль на парковку");
                     Console.ResetColor();
                     if (counter == 3)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Green;
                     }
-                    Console.WriteLine("3. Випустити автомобіль по паркувальному місцю");
+                    Console.WriteLine("\t* Випустити автомобіль по паркувальному місцю");
                     Console.ResetColor();
                     if (counter == 4)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Magenta;
                     }
-                    Console.WriteLine("4. Інформація про заповненість парковки");
+                    Console.WriteLine("\t* Інформація про заповненість парковки");
                     Console.ResetColor();
                     if (counter == 5)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
-                    Console.WriteLine("5. Перегляд статистики по проданих парко-годинах");
+                    Console.WriteLine("\t* Перегляд статистики по проданих парко-годинах");
                     Console.ResetColor();
                     if (counter == 6)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                     }
-                    Console.WriteLine("6. Вихід");
+                    Console.WriteLine("\t* Вихід");
                     Console.ResetColor();
 
                     ConsoleKeyInfo keyInfo = Console.ReadKey();
@@ -85,7 +85,9 @@ namespace Parking
                         case 1:
                             {
                                 string pName;
+                                Console.ForegroundColor = ConsoleColor.Cyan;
                                 Console.Write("Ведіть ім'я паркувальника:");
+                                Console.ResetColor();
                                 pName = Console.ReadLine();
                                 Parker.parkerName = pName;
                                 break;
@@ -100,7 +102,9 @@ namespace Parking
                             }
                         case 3:
                             {
+                                Console.ForegroundColor = ConsoleColor.Cyan; 
                                 Console.Write($"Ведіть номер місця (1-12): ");
+                                Console.ResetColor();
                                 try
                                 {
                                     int place = int.Parse(Console.ReadLine());
@@ -136,7 +140,9 @@ namespace Parking
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red; 
                     Console.WriteLine("Ви не авторизовані!");
+                    Console.ResetColor();
                     Console.ReadKey();
                 }
             }

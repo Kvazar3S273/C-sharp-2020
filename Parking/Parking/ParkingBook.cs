@@ -44,7 +44,9 @@ namespace Parking
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Парковка заповнена! Вільних місць немає!");
+                Console.ResetColor();
             }
         }
         public void AddToTicket(Ticket ticket)      //додати квитанцію
@@ -81,8 +83,10 @@ namespace Parking
 
         public void ParkingInfo()                   //інформація про вільні місця на парковці
         {
+            Console.ForegroundColor = ConsoleColor.Cyan; 
             Console.WriteLine($"Кількість вільних місць - {size - numCars} з {size}");
             Console.WriteLine($"Кількість зайнятих місць - {numCars} з {size}");
+            Console.ResetColor();
         }
 
         public void FullStatistic()                 //повна статистика по проданих парко-годинах і виписаних штрафах
@@ -97,10 +101,11 @@ namespace Parking
                 fullOverHours += (int)(el.GetMinutesOverdueTime() / 60);
                 fullOverpay += (int)el.GetOverpay();
             }
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Всього продано паркувальних годин: {fullHours}");
             Console.WriteLine($"Всього оштрафовано за простій в годинах: {fullOverHours}");
             Console.WriteLine($"Всього виписано штрафів: {fullOverpay} грн");
+            Console.ResetColor();
         }
 
         public int GetSize()                        
