@@ -6,7 +6,7 @@ namespace Parking
     public enum Numbers { AA, AB, BB, BC, CD, BD, EF, FF, DR, RA }
     public enum Colors { сірий, чорний, білий, жовтий, синій, срібний }
 
-    class Car
+    public class Car
     {
         private string brand;               //марка машини
         private string number;              //державний номер

@@ -2,7 +2,7 @@
 
 namespace Parking
 {
-    class Timer
+    public class Timer
     {
         public DateTime ToParkingTime;      //час заїзду на парковку
         public DateTime FromParkingTime;    //час виїзду з парковки

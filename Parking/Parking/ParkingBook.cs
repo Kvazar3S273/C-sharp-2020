@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Parking
 {
-    class ParkingBook
+    public class ParkingBook
     {
         private static ParkingBook parkingBook = new ParkingBook();
         private ParkingBook()

@@ -5,4 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Parking">
+      <HintPath>bin\Debug\netcoreapp3.1\Parking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

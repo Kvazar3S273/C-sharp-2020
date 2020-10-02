@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Parking
 {
-    class Parker
+    public class Parker
     {
         public static string parkerName;
         ParkingBook pBook = ParkingBook.GetInstance();  //створюємо екземпляр паркувальниї книги

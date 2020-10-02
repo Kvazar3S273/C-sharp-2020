@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Parking;
+using System;
 using System.Text;
 
-namespace Parking
+namespace DeLL
 {
     class Program
     {
@@ -102,7 +103,7 @@ namespace Parking
                             }
                         case 3:
                             {
-                                Console.ForegroundColor = ConsoleColor.Cyan; 
+                                Console.ForegroundColor = ConsoleColor.Cyan;
                                 Console.Write($"Ведіть номер місця (1-12): ");
                                 Console.ResetColor();
                                 try
@@ -140,7 +141,7 @@ namespace Parking
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red; 
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Ви не авторизовані!");
                     Console.ResetColor();
                     Console.ReadKey();

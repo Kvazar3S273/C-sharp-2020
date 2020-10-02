@@ -2,7 +2,7 @@
 
 namespace Parking
 {
-    class Ticket
+    public class Ticket
     {
         private string brand;
         private string number;
