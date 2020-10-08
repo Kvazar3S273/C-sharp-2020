@@ -1,86 +1,83 @@
 ﻿using Microsoft.VisualBasic.CompilerServices;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Text;
 
 namespace TryCatch
 {
     class Employee
     {
-        string surname;           // прізвище
-        string name;              // ім"я
-        string post;              // посада
-        short salary;             // оклад          
-        string contractNumber;    // номер договору про прийом на роботу 
-        static LogBook logBook = LogBook.GetInstance();   // журнал обліку
-        private Employee[] employees = new Employee[logBook.GetSize()];      // масив працівників
+        static string _surname;           // прізвище
+        static string _name;              // ім"я
+        static string _post;              // посада
+        static short _salary;             // оклад          
+        static string _contractNumber;    // номер договору про прийом на роботу 
+        public static Hashtable logbook;  // журнал обліку співробітників
 
-        public string Surname
+
+        
+        static Employee()
         {
-            get
-            {
-                return this.surname;
-            }
-            set
-            {
-                this.surname = value;
-            }
-        }
-        public string Name { get; set; }
-        public string Post { get; set; }
-        public short Salary { get; set; }
-        public string ContractNumber { get; set; }
-
-        //public string GetSurname()
-        //{
-        //    return this.surname;
-        //}
-
-        ////public void SetSurname(string newSurname)
-        ////{
-        ////    surname = newSurname;
-        ////}
-
-        //public string GetName()
-        //{
-        //    return this.name;
-        //}
-        //public string GetPost()
-        //{
-        //    return this.post;
-        //}
-        //public short GetSalary()
-        //{
-        //    return this.salary;
-        //}
-        //public string GetContractNumber()
-        //{
-        //    return this.contractNumber;
-        //}
-
-        public Employee()
-        {
-
+            Employee.logbook = new Hashtable();
         }
         public Employee(string surname, string name, string post, short salary, string contractNumber)
         {
-            this.surname = surname;
-            this.name = name;
-            this.post = post;
-            this.salary = salary;
-            this.contractNumber = contractNumber;
+            _surname = surname;
+            _name = name;
+            _post = post;
+            _salary = salary;
+            _contractNumber = contractNumber;
+            Employee.logbook.Add(contractNumber, surname);
+            Console.WriteLine("Співробітника {0} {1} добавлено в журнал обліку", surname, name);
         }
-        public void ShowOnceEmployee()
+        public static void ShowOnceEmployee()
         {
-            Console.WriteLine("Співробітник {0} {1}", GetSurname(), GetName());
-            Console.WriteLine("Займана посада - {0}", GetPost());
-            Console.WriteLine("Оклад - {0}", GetSalary());
-            Console.WriteLine("Номер договору - {0}", GetContractNumber());
+            Console.WriteLine("Співробітник {0} {1}", _surname, _name);
+            Console.WriteLine("Займана посада - {0}", _post);
+            Console.WriteLine("Оклад - {0}", _salary);
+            Console.WriteLine("Номер договору - {0}", _contractNumber);
+            Console.WriteLine();
+        }
+        public static void ShowLogBook()
+        {
+            Console.Clear();
+            Console.WriteLine("Журнал обліку співробітників: ");
+            foreach (DictionaryEntry item in logbook)
+            {
+                Console.WriteLine("Співробітник {0}, договір № {1}", item.Value, item.Key);
+            }
+        }
 
-            //Console.WriteLine("Співробітник {0} {1}", Surname, Name);
-            //Console.WriteLine("Займана посада - {0}", Post);
-            //Console.WriteLine("Оклад - {0}", Salary);
-            //Console.WriteLine("Номер договору - {0}", ContractNumber);
+
+        public static string Surname
+        {
+            get => _surname;
+            set => _surname = value;
+        }
+        public static string Name
+        {
+            get => _name;
+            set => _name = value;
+        }
+
+        public static string Post
+        {
+            get => _post;
+            set => _post = value;
+        }
+
+        public static short Salary
+        {
+            get => _salary;
+            set => _salary = value;
+        }
+
+        public static string ContractNumber
+        {
+            get => _contractNumber;
+            set => _contractNumber = value;
         }
     }
 }
