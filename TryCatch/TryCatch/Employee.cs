@@ -15,7 +15,17 @@ namespace TryCatch
         static LogBook logBook = LogBook.GetInstance();   // журнал обліку
         private Employee[] employees = new Employee[logBook.GetSize()];      // масив працівників
 
-        public string Surname { get; set; }
+        public string Surname
+        {
+            get
+            {
+                return this.surname;
+            }
+            set
+            {
+                this.surname = value;
+            }
+        }
         public string Name { get; set; }
         public string Post { get; set; }
         public short Salary { get; set; }
@@ -25,6 +35,12 @@ namespace TryCatch
         //{
         //    return this.surname;
         //}
+
+        ////public void SetSurname(string newSurname)
+        ////{
+        ////    surname = newSurname;
+        ////}
+
         //public string GetName()
         //{
         //    return this.name;
@@ -41,6 +57,11 @@ namespace TryCatch
         //{
         //    return this.contractNumber;
         //}
+
+        public Employee()
+        {
+
+        }
         public Employee(string surname, string name, string post, short salary, string contractNumber)
         {
             this.surname = surname;
@@ -51,15 +72,15 @@ namespace TryCatch
         }
         public void ShowOnceEmployee()
         {
-            //Console.WriteLine("Співробітник {0} {1}",GetSurname(), GetName());
-            //Console.WriteLine("Займана посада - {0}", GetPost());
-            //Console.WriteLine("Оклад - {0}", GetSalary());
-            //Console.WriteLine("Номер договору - {0}", GetContractNumber());
+            Console.WriteLine("Співробітник {0} {1}", GetSurname(), GetName());
+            Console.WriteLine("Займана посада - {0}", GetPost());
+            Console.WriteLine("Оклад - {0}", GetSalary());
+            Console.WriteLine("Номер договору - {0}", GetContractNumber());
 
-            Console.WriteLine("Співробітник {0} {1}", Surname, Name);
-            Console.WriteLine("Займана посада - {0}", Post);
-            Console.WriteLine("Оклад - {0}", Salary);
-            Console.WriteLine("Номер договору - {0}", ContractNumber);
+            //Console.WriteLine("Співробітник {0} {1}", Surname, Name);
+            //Console.WriteLine("Займана посада - {0}", Post);
+            //Console.WriteLine("Оклад - {0}", Salary);
+            //Console.WriteLine("Номер договору - {0}", ContractNumber);
         }
     }
 }

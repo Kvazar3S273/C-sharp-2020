@@ -14,15 +14,15 @@ namespace TryCatch
             //Employee employee1 = new Employee("Ковальчук", "Тарас", "приймальник", 7000, "ПРТ13-01");
             //Employee employee2 = new Employee("Петрук", "Василь", "сторож", 5000, "ПРТ13-02");
             //Employee employee3 = new Employee("Ковальчук", "Тарас", "приймальник", 7000, "ПРТ13-01");
-            //Employee employee4 = new Employee("Петрук", "Василь", "сторож", 5000, "ПРТ13-02"); 
+            //Employee employee4 = new Employee("Петрук", "Василь", "сторож", 5000, "ПРТ13-02");
             //Employee employee5 = new Employee("Ковальчук", "Тарас", "приймальник", 7000, "ПРТ13-01");
-            //Employee employee6= new Employee("Петрук", "Василь", "сторож", 5000, "ПРТ13-02"); 
+            //Employee employee6 = new Employee("Петрук", "Василь", "сторож", 5000, "ПРТ13-02");
             //Employee employee7 = new Employee("Ковальчук", "Тарас", "приймальник", 7000, "ПРТ13-01");
-            //Employee employee8 = new Employee("Петрук", "Василь", "сторож", 5000, "ПРТ13-02"); 
+            //Employee employee8 = new Employee("Петрук", "Василь", "сторож", 5000, "ПРТ13-02");
             //Employee employee9 = new Employee("Ковальчук", "Тарас", "приймальник", 7000, "ПРТ13-01");
-            //Employee employee10 = new Employee("Петрук", "Василь", "сторож", 5000, "ПРТ13-02"); 
-            //Employee employee11 = new Employee("Ковальчук", "Тарас", "приймальник", 7000, "ПРТ13-01");
-            //Employee employee12 = new Employee("Петрук", "Василь", "сторож", 5000, "ПРТ13-02");
+            //Employee employee10 = new Employee("Петрук", "Василь", "сторож", 5000, "ПРТ13-02");
+            ////Employee employee11 = new Employee("Ковальчук", "Тарас", "приймальник", 7000, "ПРТ13-01");
+            ////Employee employee12 = new Employee("Петрук", "Василь", "сторож", 5000, "ПРТ13-02");
             //lb.AddEmployee(employee1);
             //lb.AddEmployee(employee2);
             //lb.AddEmployee(employee3);
@@ -35,23 +35,7 @@ namespace TryCatch
             //lb.AddEmployee(employee10);
 
             //employee3.ShowOnceEmployee();
-
-
-
-
             //lb.Show();
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -59,8 +43,8 @@ namespace TryCatch
 
             while (true)                        //виводимо меню
             {
-                LogBook lb = new LogBook();
 
+                LogBook lb = new LogBook();
                 Console.Clear();
                 int counter = 1;
                 ConsoleKey key = ConsoleKey.Escape;
@@ -124,121 +108,111 @@ namespace TryCatch
                     }
                 } while (key != ConsoleKey.Enter);
                 Console.Clear();
-               // if (counter == 1 || counter == 6)
-                //{
-                    switch (counter)
-                    {
-                        case 1:
-                            {
-                                Console.Write("Ведіть прізвище співробітника:");
-                                string eSurname = Console.ReadLine();
-                                Console.Write("Ведіть ім\'я співробітника:");
-                                string eName = Console.ReadLine();
-                                Console.Write("Ведіть займану посаду:");
-                                string ePost = Console.ReadLine();
-                                Console.Write("Ведіть встановлений оклад:");
-                                short eSalary = short.Parse(Console.ReadLine());
-                                Console.Write("Ведіть номер договору:");
-                                string eContract = Console.ReadLine();
-                                Employee emp = new Employee(eSurname, eName, ePost, eSalary, eContract);
-                                lb.AddEmployee(emp);
-                                break;
-                            }
-                        case 2:
-                            {
-                                Console.Write("Ведіть номер договору для пошуку співробітника:");
-                                string eContract = Console.ReadLine();
-                                Employee employeeEdit = lb.FindEmployee(eContract);
-                                Console.WriteLine("Виберіть пункт для редагування:");
-                                Console.WriteLine("(1) - прізвище");
-                                Console.WriteLine("(2) - ім\'я");
-                                Console.WriteLine("(3) - посада");
-                                Console.WriteLine("(4) - оклад");
-                                Console.WriteLine("(5) - договір");
-                                int choice = int.Parse(Console.ReadLine());
-                                switch (choice)
-                                {
-                                    case 1:
-                                        {
-                                            Console.WriteLine("Введіть нове прізвище: ");
-                                            string newSurname = Console.ReadLine();
-                                            employeeEdit.Surname = newSurname;
-                                            break;
-                                        }
-                                    case 2:
-                                        {
-                                            Console.WriteLine("Введіть нове ім\'я: ");
-                                            string newName = Console.ReadLine();
-                                            employeeEdit.Name = newName;
-                                            break;
-                                        }
-                                    case 3:
-                                        {
-                                            Console.WriteLine("Введіть нову посаду: ");
-                                            string newPost = Console.ReadLine();
-                                            employeeEdit.Post = newPost;
-                                            break;
-                                        }
-                                    case 4:
-                                        {
-                                            Console.WriteLine("Введіть новий оклад: ");
-                                            short newSalary = short.Parse(Console.ReadLine());
-                                            employeeEdit.Salary = newSalary;
-                                            break;
-                                        }
-                                    case 5:
-                                        {
-                                            Console.WriteLine("Введіть нове номер договору: ");
-                                            string newContract = Console.ReadLine();
-                                            employeeEdit.ContractNumber = newContract;
-                                            break;
-                                        }
-                                    default:
-                                        break;
-                                }
-                                break;
-                            }
-                        case 3:
-                            {
-                                Console.Write("Ведіть номер договору для пошуку співробітника:");
-                                string eContract = Console.ReadLine();
-                                Employee emp = lb.FindEmployee(eContract);
-                                emp.ShowOnceEmployee();
-                                break;
-                            }
-                        case 4:
-                            {
-                                Console.Write("Ведіть номер договору для пошуку та видалення співробітника:");
-                                string eContract = Console.ReadLine();
-                                //Employee emp = lb.FindEmployee(eContract);
-                                lb.FireEmployee(eContract);
-                                break;
-                            }
-                        case 5:
-                            {
-                                lb.Show();
-                                break;
-                            }
-                        case 6:
-                            {
-                                //return;
-                                break;
-                            }
-                    }
-                //}
-                /*else
+                switch (counter)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Ви не авторизовані!");
-                    Console.ResetColor();
-                    Console.ReadKey();
-                }*/
+                    case 1:
+                        {
+                            Console.Write("Ведіть прізвище співробітника:");
+                            string eSurname = Console.ReadLine();
+                            Console.Write("Ведіть ім\'я співробітника:");
+                            string eName = Console.ReadLine();
+                            Console.Write("Ведіть займану посаду:");
+                            string ePost = Console.ReadLine();
+                            Console.Write("Ведіть встановлений оклад:");
+                            short eSalary = short.Parse(Console.ReadLine());
+                            Console.Write("Ведіть номер договору:");
+                            string eContract = Console.ReadLine();
+                            Employee emp = new Employee(eSurname, eName, ePost, eSalary, eContract);
+                            lb.AddEmployee(emp);
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.Write("Ведіть номер договору для пошуку співробітника:");
+                            string eContract = Console.ReadLine();
+                            Employee employeeEdit = lb.FindEmployee(eContract);
+                            Console.WriteLine("Виберіть пункт для редагування:");
+                            Console.WriteLine("(1) - прізвище");
+                            Console.WriteLine("(2) - ім\'я");
+                            Console.WriteLine("(3) - посада");
+                            Console.WriteLine("(4) - оклад");
+                            Console.WriteLine("(5) - договір");
+                            int choice = int.Parse(Console.ReadLine());
+                            switch (choice)
+                            {
+                                case 1:
+                                    {
+                                        Console.WriteLine("Введіть нове прізвище: ");
+                                        string newSurname = Console.ReadLine();
+                                        employeeEdit.Surname = newSurname;
+                                        break;
+                                    }
+                                case 2:
+                                    {
+                                        Console.WriteLine("Введіть нове ім\'я: ");
+                                        string newName = Console.ReadLine();
+                                        employeeEdit.Name = newName;
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        Console.WriteLine("Введіть нову посаду: ");
+                                        string newPost = Console.ReadLine();
+                                        employeeEdit.Post = newPost;
+                                        break;
+                                    }
+                                case 4:
+                                    {
+                                        Console.WriteLine("Введіть новий оклад: ");
+                                        short newSalary = short.Parse(Console.ReadLine());
+                                        employeeEdit.Salary = newSalary;
+                                        break;
+                                    }
+                                case 5:
+                                    {
+                                        Console.WriteLine("Введіть нове номер договору: ");
+                                        string newContract = Console.ReadLine();
+                                        employeeEdit.ContractNumber = newContract;
+                                        break;
+                                    }
+                                default:
+                                    break;
+                            }
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.Write("Ведіть номер договору для пошуку співробітника:");
+                            string eContract = Console.ReadLine();
+                            Employee emp = lb.FindEmployee(eContract);
+                            emp.ShowOnceEmployee();
+                            break;
+                        }
+                    case 4:
+                        {
+                            Console.Write("Ведіть номер договору для пошуку та видалення співробітника:");
+                            string eContract = Console.ReadLine();
+                            //Employee emp = lb.FindEmployee(eContract);
+                            lb.FireEmployee(eContract);
+                            break;
+                        }
+                    case 5:
+                        {
+                            lb.Show();
+                            break;
+                        }
+                    case 6:
+                        {
+                            //return;
+                            break;
+                        }
+                }
             }
-        
-        
-        
-        
-        
+
+
+
+
+
         }
     }
 }

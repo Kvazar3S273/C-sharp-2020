@@ -94,7 +94,9 @@ namespace TryCatch
         {
             foreach (var emp in employees)
             {
-                Console.Write("{0} - {1} {2}", emp.ContractNumber, emp.Surname, emp.Name);
+                //Console.Write("{0} - {1} {2}", emp.ContractNumber, emp.Surname, emp.Name);
+                Console.Write("{0} - {1} {2}", emp.GetContractNumber(), emp.GetSurname(), emp.GetName());
+
                 Console.WriteLine();
             }
         }
