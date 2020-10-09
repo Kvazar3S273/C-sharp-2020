@@ -29,7 +29,7 @@ namespace TryCatch
             _post = post;
             _salary = salary;
             _contractNumber = contractNumber;
-            Employee.logbook.Add(contractNumber, surname);
+            Employee.logbook.Add(_contractNumber, _surname);
             Console.WriteLine("Співробітника {0} {1} добавлено в журнал обліку", surname, name);
         }
         public static void ShowOnceEmployee()
@@ -48,8 +48,21 @@ namespace TryCatch
             {
                 Console.WriteLine("Співробітник {0}, договір № {1}", item.Value, item.Key);
             }
+            //foreach (DictionaryEntry item in Employee.logbook.Values)
+            //{
+            //    if(item is Employee)
+            //    {
+            //        Employee.ShowOnceEmployee();
+            //    }
+            //    Console.WriteLine();
+            //}
         }
 
+        public override string ToString()
+        {
+            //return base.ToString();
+            return $"\nНомер договору:\t\t{_contractNumber}\nСпівробітник:\t\t{_surname}\nПосада:\t{_post}\nОклад:\t\t{_salary}\n";
+        }
 
         public static string Surname
         {

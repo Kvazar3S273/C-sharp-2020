@@ -128,8 +128,7 @@ namespace TryCatch
                                             {
                                                 Console.WriteLine("Введіть нове прізвище: ");
                                                 string newSurname = Console.ReadLine();
-                                                de.Key
-                                                Employe.Surname = newSurname;
+                                                Employee.Surname = newSurname;
                                                 break;
                                             }
                                         case 2:
@@ -174,9 +173,20 @@ namespace TryCatch
                         {
                             Console.Write("Ведіть номер договору для пошуку співробітника:");
                             string eContract = Console.ReadLine();
-                            if (Employee.logbook.Contains(eContract))
+                            ICollection c = Employee.logbook.Keys;
+                            foreach (DictionaryEntry de in c)
                             {
-                                Employee.ShowOnceEmployee();
+                                if(de.Key==eContract)
+                                {
+                                    de.ToString();
+
+                                }
+                                //if (Employee.logbook.Contains(eContract))
+                                //{
+                                //    //Employee.ShowOnceEmployee();
+                                //    //de.ToString();
+                                //    //Console.WriteLine(de.Value.ToString());
+                                //}
                             }
                             Console.ReadKey();
                             break;
