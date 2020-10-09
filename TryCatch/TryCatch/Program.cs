@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Text;
 
 namespace TryCatch
@@ -109,57 +110,62 @@ namespace TryCatch
                         {
                             Console.Write("Ведіть номер договору для пошуку співробітника:");
                             string eContract = Console.ReadLine();
-                            if (Employee.logbook.Contains(eContract))
+                            foreach (DictionaryEntry de in Employee.logbook)
                             {
-                                Employee.ShowOnceEmployee();
-                                Console.WriteLine("\n\nВиберіть пункт для редагування:");
-                                Console.WriteLine("(1) - прізвище");
-                                Console.WriteLine("(2) - ім\'я");
-                                Console.WriteLine("(3) - посада");
-                                Console.WriteLine("(4) - оклад");
-                                Console.WriteLine("(5) - договір");
-                                int choice = int.Parse(Console.ReadLine());
-                                switch (choice)
+                                if (Employee.logbook.Contains(eContract))
                                 {
-                                    case 1:
-                                        {
-                                            Console.WriteLine("Введіть нове прізвище: ");
-                                            string newSurname = Console.ReadLine();
-                                            Employee.Surname = newSurname;
+                                    Employee.ShowOnceEmployee();
+                                    Console.WriteLine("\n\nВиберіть пункт для редагування:");
+                                    Console.WriteLine("(1) - прізвище");
+                                    Console.WriteLine("(2) - ім\'я");
+                                    Console.WriteLine("(3) - посада");
+                                    Console.WriteLine("(4) - оклад");
+                                    Console.WriteLine("(5) - договір");
+                                    int choice = int.Parse(Console.ReadLine());
+                                    switch (choice)
+                                    {
+                                        case 1:
+                                            {
+                                                Console.WriteLine("Введіть нове прізвище: ");
+                                                string newSurname = Console.ReadLine();
+                                                de.Key
+                                                Employe.Surname = newSurname;
+                                                break;
+                                            }
+                                        case 2:
+                                            {
+                                                Console.WriteLine("Введіть нове ім\'я: ");
+                                                string newName = Console.ReadLine();
+                                                Employee.Name = newName;
+                                                break;
+                                            }
+                                        case 3:
+                                            {
+                                                Console.WriteLine("Введіть нову посаду: ");
+                                                string newPost = Console.ReadLine();
+                                                Employee.Post = newPost;
+                                                break;
+                                            }
+                                        case 4:
+                                            {
+                                                Console.WriteLine("Введіть новий оклад: ");
+                                                short newSalary = short.Parse(Console.ReadLine());
+                                                Employee.Salary = newSalary;
+                                                break;
+                                            }
+                                        case 5:
+                                            {
+                                                Console.WriteLine("Введіть нове номер договору: ");
+                                                string newContract = Console.ReadLine();
+                                                Employee.ContractNumber = newContract;
+                                                break;
+                                            }
+                                        default:
                                             break;
-                                        }
-                                    case 2:
-                                        {
-                                            Console.WriteLine("Введіть нове ім\'я: ");
-                                            string newName = Console.ReadLine();
-                                            Employee.Name = newName;
-                                            break;
-                                        }
-                                    case 3:
-                                        {
-                                            Console.WriteLine("Введіть нову посаду: ");
-                                            string newPost = Console.ReadLine();
-                                            Employee.Post = newPost;
-                                            break;
-                                        }
-                                    case 4:
-                                        {
-                                            Console.WriteLine("Введіть новий оклад: ");
-                                            short newSalary = short.Parse(Console.ReadLine());
-                                            Employee.Salary = newSalary;
-                                            break;
-                                        }
-                                    case 5:
-                                        {
-                                            Console.WriteLine("Введіть нове номер договору: ");
-                                            string newContract = Console.ReadLine();
-                                            Employee.ContractNumber = newContract;
-                                            break;
-                                        }
-                                    default:
-                                        break;
+                                    }
                                 }
                             }
+                            
 
 
                             break;
