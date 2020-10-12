@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 
 namespace TryCatch
 {
@@ -21,9 +16,6 @@ namespace TryCatch
         {
             Emp.logbook = new Hashtable();
         }
-
-        
-
 
         public Emp(string name, string surname, string post, short salary, string contract)
         {
@@ -144,21 +136,24 @@ namespace TryCatch
             }
         }
 
-        public static void DeleteFromJournal()
+        
+        public static void DeleteFromLogBook()
         {
             Emp.ShowLogBook();
-            string code = "";
-            Console.WriteLine("Введіть номер договору для видалення");
-            Console.ReadKey();
-            code = Console.ReadLine();
+            string numb = "";
+            Console.WriteLine("Введіть номер договору для видалення працівника");
+            numb = Console.ReadLine();
 
             try
             {
-                if (!Emp.logbook.Contains(code))
+                if (!Emp.logbook.ContainsKey(numb))
                 {
                     throw new Exception("Працівника за таким номером договору не існує!");
                 }
-                Emp.logbook.Remove(code);
+                else
+                {
+                    Emp.logbook.Remove(numb);
+                }
             }
             catch (Exception ex)
             {
@@ -167,9 +162,15 @@ namespace TryCatch
                     Console.WriteLine("Книга обліку порожня!");
                     return;
                 }
-                Console.WriteLine(ex.Message);
+                else
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 return;
             }
+
+            Console.WriteLine("Список працівників після видалення:");
+            Emp.ShowLogBook();
         }
     }
 
@@ -183,9 +184,5 @@ namespace TryCatch
     {
         public override string Message => "Прізвище не може містити цифр або символів!";
     }
-
-    class SalaryEx : ApplicationException
-    {
-        public override string Message => "Оклад може містити тільки ціле число в розумних межах!";
-    }
+   
 }
