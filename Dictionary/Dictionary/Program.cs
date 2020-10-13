@@ -26,7 +26,6 @@ namespace Dictionary
             dictionary.Add("Мексика", "Mexico");
             dictionary.Add("США", "USA");
 
-
             while (true)                        
             {
                 Console.Clear();
@@ -123,10 +122,6 @@ namespace Dictionary
                                     }
                             }
 
-
-                            //Console.ForegroundColor = ConsoleColor.Cyan;
-
-                            //Console.ResetColor();
                             Console.ReadKey();
                             break;
                         }
@@ -136,12 +131,7 @@ namespace Dictionary
                             break;
                         }
                 }
-                
             }
-
-
-
-
         }
     }
 }

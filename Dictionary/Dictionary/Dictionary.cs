@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Dictionary
@@ -59,34 +60,11 @@ namespace Dictionary
             }
             else
             {
-                Console.WriteLine("{0}  -  {1}", dictionary[word], word);
+                Console.WriteLine("{0}  -  {1}", word, dictionary.First(n=>n.Value==word).Key);
                 return true;
             }
         }
 
-        //public string TranslateUE(string word)
-        //{
-        //    string result="";
-        //    foreach (var item in dictionary.Keys)
-        //    {
-        //        if((string)dictionary[item]==word)
-        //        {
-        //            result=(string)item;
-        //        }
-        //    }
-        //        return result;
-        //}
-        //public string TranslateEU(string word)
-        //{
-        //    string result = "";
-        //    foreach (var item in dictionary.Keys)
-        //    {
-        //        if ((string)item == word)
-        //        {
-        //            result = (string)dictionary[item];
-        //        }
-        //    }
-        //    return result;
-        //}
+        
     }
 }
