@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tamagochi", "Tamagochi\Tamagochi.csproj", "{6A015D94-B9BA-42DB-A04E-19150F3926E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tama-Gochi", "Tama-Gochi\Tama-Gochi.csproj", "{56BF78A2-54BC-497D-9AFE-A520C4DCC9D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6A015D94-B9BA-42DB-A04E-19150F3926E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A015D94-B9BA-42DB-A04E-19150F3926E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A015D94-B9BA-42DB-A04E-19150F3926E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A015D94-B9BA-42DB-A04E-19150F3926E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56BF78A2-54BC-497D-9AFE-A520C4DCC9D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56BF78A2-54BC-497D-9AFE-A520C4DCC9D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56BF78A2-54BC-497D-9AFE-A520C4DCC9D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56BF78A2-54BC-497D-9AFE-A520C4DCC9D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {10D4DA8F-A5C9-47B0-909F-041B1E317E62}
+		SolutionGuid = {015DD36A-B5DF-4777-88D3-BBFA76F1D012}
 	EndGlobalSection
 EndGlobal
