@@ -95,11 +95,12 @@ namespace ClearLinq
             //    Console.WriteLine(item);
             //}
 
-            IEnumerable<Teachers> report1 = teachers.Where(x => x.Salary < 12000).Select(y => y);
+            IEnumerable<Teachers> report1 = teachers.Select(y => y);
             foreach (var x in report1)
             {
                 Console.WriteLine(x);
             }
+
         }
     }
 }
