@@ -6,22 +6,19 @@ namespace ClearLinq
 {
     class Departments
     {
-        string depName;
-        int finance;
-        List<Groups> groups = new List<Groups>();
-        public Departments(string dn, int f)
+        public Departments(string departmentName, int finance)
         {
-            depName = dn;
-            finance = f;
+            DepartmentName = departmentName;
+            Finance = finance;
         }
 
         public override string ToString()
         {
-            return "Кафедра <<" + depName + ">> з фінансуванням " + finance + " грн на рік";
+            return "Кафедра <<" + DepartmentName + ">> з фінансуванням " + Finance + " грн на рік";
         }
 
         public string DepartmentName { get; set; }
         public int Finance { get; set; }
-        public Groups Groups { get; set; }
+        public List<Groups> Groups { get; set; } = new List<Groups>();
     }
 }

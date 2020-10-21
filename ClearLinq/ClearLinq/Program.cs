@@ -12,6 +12,7 @@ namespace ClearLinq
             Console.OutputEncoding = Encoding.Unicode;
             Console.InputEncoding = Encoding.Unicode;
 
+            // Init objects
             Teachers t1 = new Teachers("Стадник", "Іван", 10500);
             Teachers t2 = new Teachers("Лукащук", "Софія", 11200);
             Teachers t3 = new Teachers("Поляхов", "Руслан", 15000);
@@ -20,14 +21,7 @@ namespace ClearLinq
             Teachers t6 = new Teachers("Гоч", "Тамара", 13100);
             Teachers t7 = new Teachers("Адамс", "Саманта", 9900);
 
-            List<Teachers> teachers = new List<Teachers>();
-            teachers.Add(t1);
-            teachers.Add(t2);
-            teachers.Add(t3);
-            teachers.Add(t4);
-            teachers.Add(t5);
-            teachers.Add(t6);
-            teachers.Add(t7);
+            var allTeachers = new List<Teachers> { t1, t2, t3, t4, t5, t6, t7 };
 
             Groups g1 = new Groups("P101", 1);
             Groups g2 = new Groups("P102", 1);
@@ -40,67 +34,67 @@ namespace ClearLinq
             Groups g9 = new Groups("P109", 5);
             Groups g10 = new Groups("P110", 5);
 
-            List<Groups> groups = new List<Groups>();
-            groups.Add(g1);
-            groups.Add(g2);
-            groups.Add(g3);
-            groups.Add(g4);
-            groups.Add(g5);
-            groups.Add(g6);
-            groups.Add(g7);
-            groups.Add(g8);
-            groups.Add(g9);
-            groups.Add(g10);
+            var allGroups = new List<Groups> { g1, g2, g3, g4, g5, g6, g7, g8, g9, g10 };
 
             Faculties f1 = new Faculties("ІТ освіта", 2000000);
             Faculties f2 = new Faculties("Адміністрування", 1000000);
             Faculties f3 = new Faculties("Дизайн", 1500000);
 
-            List<Faculties> faculties = new List<Faculties>();
-            faculties.Add(f1);
-            faculties.Add(f2);
-            faculties.Add(f3);
+            var allFaculties = new List<Faculties> { f1, f2, f3 };
 
             Departments d1 = new Departments("Програмування", 500000);
             Departments d2 = new Departments("WEB дизайн", 700000);
             Departments d3 = new Departments("Комп\'ютерні мережі", 500000);
             Departments d4 = new Departments("Розробка баз даних", 500000);
+
+            var allDepartments = new List<Departments> { d1, d2, d3, d4 };
+
+            // Link objects
+            // Init groups
+            g1.Teachers = new List<Teachers> { t1, t2, t3 };
+            g2.Teachers = new List<Teachers> { t2, t5, t7 };
+
+            g1.Faculties = new List<Faculties> { f1 };
+            g2.Faculties = new List<Faculties> { f1, f2 };
+
+            // Init teachers
+            t1.Departments = new List<Departments> { d1 };
+            t2.Departments = new List<Departments> { d2 };
+
+            // Init departments
+            d1.Groups = new List<Groups> { g1, g2, g3 };
             
-            List<Departments> departments = new List<Departments>();
-            departments.Add(d1);
-            departments.Add(d2);
-            departments.Add(d3);
-            departments.Add(d4);
+            // Init faculties
+            f1.Departments = new List<Departments> { d1, d2, d3 };
 
-            //foreach (var item in teachers)
-            //{
-            //    Console.WriteLine(item);
-            //}
-            //Console.WriteLine("---------------------");
-
-            //foreach (var item in groups)
-            //{
-            //    Console.WriteLine(item);
-            //}
-            //Console.WriteLine("---------------------");
-
-            //foreach (var item in faculties)
-            //{
-            //    Console.WriteLine(item);
-            //}
-            //Console.WriteLine("---------------------");
-
-            //foreach (var item in departments)
-            //{
-            //    Console.WriteLine(item);
-            //}
-
-            IEnumerable<Teachers> report1 = teachers.Select(y => y);
+            
+            var report1 = allGroups.SelectMany(g => g.Teachers
+                .Select(t => new { group = g, teacher = t }));
+            Console.WriteLine("Report1");
             foreach (var x in report1)
             {
                 Console.WriteLine(x);
             }
 
+            //var report2 = allFaculties.Where(f => f.Finance < f.Departments.Sum(d => d.Finance))
+            //    .Select(f => f.FacultieName);
+            //Console.WriteLine("Report2");
+            //foreach (var x in report2)
+            //{
+            //    Console.WriteLine(x);
+            //}
+
+            //var report3 = allGroups.Where(g => g.GroupName == "P107").SelectMany(g => g.Teachers)
+            //    .Select(t => new { surname = t.Surname, name = t.Name });
+            //Console.WriteLine("Report3");
+            //foreach (var x in report3)
+            //{
+            //    Console.WriteLine(x);
+            //}
+
+            //var report4 = allTeachers.SelectMany(t =>
+            //    allFaculties.Where(f => f.Departments.Any(d => t.Departments.Contains(d))).Select(f => new { f, t }))
+            //    .Select();
         }
     }
 }

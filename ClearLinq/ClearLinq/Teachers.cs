@@ -6,26 +6,21 @@ namespace ClearLinq
 {
     class Teachers
     {
-        string surname;
-        string name;
-        int salary;
-        List<Departments> depart = new List<Departments>();
-
-        public Teachers(string sn, string n, int s)
+        public Teachers(string surname, string name, int salary)
         {
-            surname = sn;
-            name = n;
-            salary = s;
+            Surname = surname;
+            Name = name;
+            Salary = salary;
         }
 
         public override string ToString()
         {
-            return surname + " " + name + " з/п " + salary;
+            return Surname + " " + Name + " з/п " + Salary;
         }
         public string Surname { get; set; }
         public string Name { get; set; }
         public int Salary { get; set; }
-        public Departments Depart { get; set; }
+        public List<Departments> Departments { get; set; } = new List<Departments>();
 
     }
 }

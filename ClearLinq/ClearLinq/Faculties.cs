@@ -6,21 +6,17 @@ namespace ClearLinq
 {
     class Faculties
     {
-        string facName;
-        int finance;
-        List<Departments> deps = new List<Departments>();
-
-        public Faculties(string fn, int f)
+        public Faculties(string facultieName, int finance)
         {
-            facName = fn;
-            finance = f;
+            FacultieName = facultieName;
+            Finance = finance;
         }
         public override string ToString()
         {
-            return "Факультет <<" +facName+ ">> з фінансуванням " + finance + " грн на рік";
+            return "Факультет <<" + FacultieName + ">> з фінансуванням " + Finance + " грн на рік";
         }
         public string FacultieName { get; set; }
         public int Finance { get; set; }
-        public Departments Departments { get; set; }
+        public List<Departments> Departments { get; set; } = new List<Departments>();
     }
 }

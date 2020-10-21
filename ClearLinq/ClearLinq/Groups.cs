@@ -6,25 +6,20 @@ namespace ClearLinq
 {
     class Groups
     {
-        string groupName;
-        int course;
-        List<Teachers> teachs = new List<Teachers>();
-        List<Faculties> facs = new List<Faculties>();
-
-        public Groups(string gn, int c)
+        public Groups(string groupName, int course)
         {
-            groupName = gn;
-            course = c;
+            GroupName = groupName;
+            Course = course;
         }
 
         public override string ToString()
         {
-            return "Група " + groupName + " " + course + "-й курс";
+            return "Група " + GroupName + " " + Course + "-й курс";
         }
 
         public string GroupName { get; set; }
         public int Course { get; set; }
-        public Teachers Teachers { get; set; }
-        public Faculties Faculties { get; set; }
+        public List<Teachers> Teachers { get; set; } = new List<Teachers>();
+        public List<Faculties> Faculties { get; set; } = new List<Faculties>();
     }
 }
