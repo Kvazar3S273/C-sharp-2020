@@ -14,7 +14,9 @@ namespace ClearLinq
 
         public override string ToString()
         {
-            return "Кафедра <<" + DepartmentName + ">> з фінансуванням " + Finance + " грн на рік";
+            //return "Кафедра <<" + DepartmentName + ">> з фінансуванням " + Finance + " грн на рік";
+            return "<<" + DepartmentName + ">>";
+
         }
 
         public string DepartmentName { get; set; }

@@ -14,7 +14,9 @@ namespace ClearLinq
 
         public override string ToString()
         {
-            return "Група " + GroupName + " " + Course + "-й курс";
+            //return "Група " + GroupName + " " + Course + "-й курс";
+            return GroupName;
+
         }
 
         public string GroupName { get; set; }

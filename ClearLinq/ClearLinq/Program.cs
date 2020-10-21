@@ -49,52 +49,156 @@ namespace ClearLinq
 
             var allDepartments = new List<Departments> { d1, d2, d3, d4 };
 
-            // Link objects
-            // Init groups
-            g1.Teachers = new List<Teachers> { t1, t2, t3 };
-            g2.Teachers = new List<Teachers> { t2, t5, t7 };
+            // Списки
+            // Списки група-викладачі
+            g1.Teachers = new List<Teachers> { t1, t2, t3, t4, t7 };
+            g2.Teachers = new List<Teachers> { t2, t4, t5, t6, t7 };
+            g3.Teachers = new List<Teachers> { t1, t2, t3, t7 };
+            g4.Teachers = new List<Teachers> { t2, t3, t4, t6 };
+            g5.Teachers = new List<Teachers> { t2, t5, t6 };
+            g6.Teachers = new List<Teachers> { t1, t4, t5 };
+            g7.Teachers = new List<Teachers> { t2, t5, t6, t7 };
+            g8.Teachers = new List<Teachers> { t2, t4, t6};
+            g9.Teachers = new List<Teachers> { t1, t2, t4, t7 };
+            g10.Teachers = new List<Teachers> { t2, t3, t5, t6 };
 
-            g1.Faculties = new List<Faculties> { f1 };
-            g2.Faculties = new List<Faculties> { f1, f2 };
+            // Списки група-факультет
+            g1.Faculties = new List<Faculties> { f1, f2 };
+            g2.Faculties = new List<Faculties> { f1, f2, f3 };
+            g3.Faculties = new List<Faculties> { f1, f2 };
+            g4.Faculties = new List<Faculties> { f2, f3 };
+            g5.Faculties = new List<Faculties> { f1, f3 };
+            g6.Faculties = new List<Faculties> { f1, f2, f3 };
+            g7.Faculties = new List<Faculties> { f1, f3 };
+            g8.Faculties = new List<Faculties> { f1, f2 };
+            g9.Faculties = new List<Faculties> { f2, f3 };
+            g10.Faculties = new List<Faculties> { f1, f2, f3 };
 
-            // Init teachers
-            t1.Departments = new List<Departments> { d1 };
+
+            // Списки викладач-кафедра
+            t1.Departments = new List<Departments> { d1, d3 };
             t2.Departments = new List<Departments> { d2 };
+            t3.Departments = new List<Departments> { d1, d2, d3, d4 };
+            t4.Departments = new List<Departments> { d1, d2 };
+            t5.Departments = new List<Departments> { d1 };
+            t6.Departments = new List<Departments> { d1, d3, d4 };
+            t7.Departments = new List<Departments> { d2, d4 };
 
-            // Init departments
-            d1.Groups = new List<Groups> { g1, g2, g3 };
+
+            // Списки кафедра-група
+            d1.Groups = new List<Groups> { g1, g2, g3, g5, g6, g9, g10 };
+            d2.Groups = new List<Groups> { g2, g4, g5, g8, g10 };
+            d3.Groups = new List<Groups> { g1, g3, g4, g5, g7, g8, g9 };
+            d4.Groups = new List<Groups> { g1, g3, g4, g6, g7, g10 };
             
-            // Init faculties
+            // Списки факультет-кафедра
             f1.Departments = new List<Departments> { d1, d2, d3 };
+            f2.Departments = new List<Departments> { d1, d3, d4 };
+            f3.Departments = new List<Departments> { d2, d4 };
 
-            
-            var report1 = allGroups.SelectMany(g => g.Teachers
-                .Select(t => new { group = g, teacher = t }));
-            Console.WriteLine("Report1");
+
+            //1.Вывести все возможные пары строк преподавателей и групп.
+
+            var report1 = allGroups.SelectMany(g => g.Teachers.Select(t => new { група = g, вчитель = t }));
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Вибірка: Групи та викладачі, які в них читають");
+            Console.ResetColor();
             foreach (var x in report1)
             {
                 Console.WriteLine(x);
             }
+            Console.WriteLine("===================================================================\n");
 
-            //var report2 = allFaculties.Where(f => f.Finance < f.Departments.Sum(d => d.Finance))
-            //    .Select(f => f.FacultieName);
-            //Console.WriteLine("Report2");
-            //foreach (var x in report2)
+            //2.Вывести названия факультетов, фонд финансирования кафедр которых превышает фонд финансирования факультета.
+
+            var report2 = allFaculties.Where(f => f.Finance < f.Departments.Sum(d => d.Finance)).Select(f => f.FacultieName);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Вибірка: факультети, фонд фінансування кафедр яких перевищує фонд фінансування факультету");
+            Console.ResetColor();
+            foreach (var x in report2)
+            {
+                Console.WriteLine(x);
+            }
+            Console.WriteLine("===================================================================\n");
+
+            //3.Вывести имена и фамилии преподавателей, которые читают лекции у группы “P107”.
+
+            var report3 = allGroups.Where(g => g.GroupName == "P107").SelectMany(g => g.Teachers).Select(t => t);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Вибірка: Прізвища і імена викладачів, які читають лекції у групі Р107");
+            Console.ResetColor();
+            foreach (var x in report3)
+            {
+                Console.WriteLine(x);
+            }
+            Console.WriteLine("===================================================================\n");
+
+            //4.Вывести фамилии преподавателей и названия факультетов на которых они читают лекции.
+
+            var report4 = allTeachers.SelectMany(t =>
+                allFaculties.Where(f => f.Departments.Any(d => t.Departments.Contains(d)))
+                .Select(f => new { викладач = t, факультет = f }))
+                .Select(t => t);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Вибірка: Прізвища викладачів і назви факультетів, на яких вони читають лекції");
+            Console.ResetColor();
+            foreach (var x in report4)
+            {
+                Console.WriteLine(x);
+            }
+            Console.WriteLine("===================================================================\n");
+
+            //5.Вывести названия кафедр и названия групп, которые к ним относятся.
+
+            var report5 = allDepartments.SelectMany(d => d.Groups.Select(g => new { кафедра = d, група = g }));
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Вибірка: Назви кафедр і назви груп, які до них відносяться");
+            Console.ResetColor();
+            foreach (var x in report5)
+            {
+                Console.WriteLine(x);
+            }
+            Console.WriteLine("===================================================================\n");
+
+            //6.Вывести названия кафедр, на которых читает преподаватель “Samantha Adams”.
+
+            var report6 = allTeachers.Where(t => t.Surname == "Адамс").SelectMany(d => d.Departments).Select(d => d);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Вибірка: Назви кафедр, на яких читає Саманта Адамс");
+            Console.ResetColor();
+            foreach (var x in report6)
+            {
+                Console.WriteLine(x);
+            }
+            Console.WriteLine("===================================================================\n");
+
+            //7.Вывести названия групп, которые относятся к факультету “Computer Science”.
+
+
+            //Console.ForegroundColor = ConsoleColor.Red;
+            //Console.WriteLine("Вибірка: Назви груп, які відносяться до факультету ІТ освіта");
+            //Console.ResetColor();
+            //foreach (var x in report7)
             //{
             //    Console.WriteLine(x);
             //}
+            //Console.WriteLine("===================================================================\n");
 
-            //var report3 = allGroups.Where(g => g.GroupName == "P107").SelectMany(g => g.Teachers)
-            //    .Select(t => new { surname = t.Surname, name = t.Name });
-            //Console.WriteLine("Report3");
-            //foreach (var x in report3)
-            //{
-            //    Console.WriteLine(x);
-            //}
 
-            //var report4 = allTeachers.SelectMany(t =>
-            //    allFaculties.Where(f => f.Departments.Any(d => t.Departments.Contains(d))).Select(f => new { f, t }))
-            //    .Select();
+            //8.Вывести названия групп 5 - го курса, а также название факультетов, к которым они относятся.
+
+            var report8 = allGroups.Where(x=>x.Course==5).SelectMany(g => g.Faculties.Select(f => new { група = g, факультет = f }));
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Вибірка: Групи 5-го курсу та факультети, до яких вони відносяться");
+            Console.ResetColor();
+            foreach (var x in report8)
+            {
+                Console.WriteLine(x);
+            }
+            Console.WriteLine("===================================================================\n");
+
+
         }
     }
 }

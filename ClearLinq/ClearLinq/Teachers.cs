@@ -15,7 +15,7 @@ namespace ClearLinq
 
         public override string ToString()
         {
-            return Surname + " " + Name + " з/п " + Salary;
+            return Surname + " " + Name;// + " з/п " + Salary;
         }
         public string Surname { get; set; }
         public string Name { get; set; }
