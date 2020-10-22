@@ -12,7 +12,7 @@ namespace ClearLinq
             Console.OutputEncoding = Encoding.Unicode;
             Console.InputEncoding = Encoding.Unicode;
 
-            // Init objects
+            // Ініціалізація об"єктів
             Teachers t1 = new Teachers("Стадник", "Іван", 10500);
             Teachers t2 = new Teachers("Лукащук", "Софія", 11200);
             Teachers t3 = new Teachers("Поляхов", "Руслан", 15000);
@@ -74,7 +74,6 @@ namespace ClearLinq
             g9.Faculties = new List<Faculties> { f2, f3 };
             g10.Faculties = new List<Faculties> { f1, f2, f3 };
 
-
             // Списки викладач-кафедра
             t1.Departments = new List<Departments> { d1, d3 };
             t2.Departments = new List<Departments> { d2 };
@@ -83,7 +82,6 @@ namespace ClearLinq
             t5.Departments = new List<Departments> { d1 };
             t6.Departments = new List<Departments> { d1, d3, d4 };
             t7.Departments = new List<Departments> { d2, d4 };
-
 
             // Списки кафедра-група
             d1.Groups = new List<Groups> { g1, g2, g3, g5, g6, g9, g10 };
@@ -174,20 +172,22 @@ namespace ClearLinq
 
             //7.Вывести названия групп, которые относятся к факультету “Computer Science”.
 
+            var report7 = allGroups.SelectMany(x => x.Faculties.Where(y => y.FacultieName == "ІТ освіта")
+                .Select(t => new { група = x.GroupName }));
 
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Console.WriteLine("Вибірка: Назви груп, які відносяться до факультету ІТ освіта");
-            //Console.ResetColor();
-            //foreach (var x in report7)
-            //{
-            //    Console.WriteLine(x);
-            //}
-            //Console.WriteLine("===================================================================\n");
-
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Вибірка: Назви груп, які відносяться до факультету ІТ освіта");
+            Console.ResetColor();
+            foreach (var x in report7)
+            {
+                Console.WriteLine(x);
+            }
+            Console.WriteLine("===================================================================\n");
 
             //8.Вывести названия групп 5 - го курса, а также название факультетов, к которым они относятся.
 
-            var report8 = allGroups.Where(x=>x.Course==5).SelectMany(g => g.Faculties.Select(f => new { група = g, факультет = f }));
+            var report8 = allGroups.Where(x=>x.Course==5)
+                .SelectMany(g => g.Faculties.Select(f => new { група = g, факультет = f }));
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Вибірка: Групи 5-го курсу та факультети, до яких вони відносяться");
@@ -197,8 +197,6 @@ namespace ClearLinq
                 Console.WriteLine(x);
             }
             Console.WriteLine("===================================================================\n");
-
-
         }
     }
 }
