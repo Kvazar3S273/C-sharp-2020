@@ -13,143 +13,67 @@ namespace SkipTake
             Console.InputEncoding = Encoding.Unicode;
 
             IEnumerable<Teachers> teachers = Teachers.GetTeachers();
-            //foreach (var item in teachers)
-            //{
-            //    Console.WriteLine(item);
-            //}
-            //Console.WriteLine("------------------------------");
-
+            
+            int skipps = 0;
             int numberItemsOnPage = 6;
-            int numberPage;
-            int startPageNumber = 0;
 
+            var collection = teachers.Skip(skipps * numberItemsOnPage).Take(numberItemsOnPage);
             while (true)
             {
-                Console.Clear();
-                int counter = 1;
-                ConsoleKey key = ConsoleKey.Escape;
-
+                ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
                 do
                 {
                     Console.Clear();
-                    if (counter == 1)
+                    Console.CursorVisible = false;
+                    collection = teachers.Skip(skipps * numberItemsOnPage).Take(numberItemsOnPage);
+                    if (collection.Count() <= 0)
                     {
-                        Console.ForegroundColor = ConsoleColor.White;
+                        skipps--;
+                        break;
                     }
-                        IEnumerable<Teachers> page1 = teachers.Skip(0).Take(6);
-                        Console.WriteLine("------------------------------");
-                        foreach (Teachers t in page1)
-                        {
-                            Console.WriteLine(t);
-                        }
-                        Console.WriteLine("------------------------------");
-                    Console.ReadLine();
+
+                    Console.WriteLine("------------------------------");
+                    foreach (var item in collection)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    Console.WriteLine("------------------------------");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\n     <-  Сторiнка: " + (skipps + 1) + "  ->");
                     Console.ResetColor();
-                    Console.Clear();
+                    Console.WriteLine("\n      (ESC - щоб вийти)");
 
-                    if (counter == 2)
+                    keyInfo = Console.ReadKey();
+                    if (keyInfo.Key == ConsoleKey.Escape)
                     {
-                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n        Do widzenia!");
+                        Console.ResetColor();
+                        return;
                     }
-                        IEnumerable<Teachers> page2= teachers.Skip(6).Take(6);
-                        Console.WriteLine("------------------------------");
-                        foreach (Teachers t in page2)
+                } while (keyInfo.Key != ConsoleKey.LeftArrow && keyInfo.Key != ConsoleKey.RightArrow || keyInfo.Key==ConsoleKey.Escape);
+
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.RightArrow:
+                    {
+                        if (skipps < teachers.Count() / 5)
                         {
-                            Console.WriteLine(t);
+                            skipps++;
                         }
-                        Console.WriteLine("------------------------------");
-                    Console.ReadLine();
-                    Console.ResetColor();
-                    Console.Clear();
-
-                    if (counter == 3)
-                    {
-                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
                     }
-                        IEnumerable<Teachers> page3 = teachers.Skip(12).Take(6);
-                        Console.WriteLine("------------------------------");
-                        foreach (Teachers t in page3)
+                    case ConsoleKey.LeftArrow:
+                    {
+                        if (skipps > 0)
                         {
-                            Console.WriteLine(t);
+                            skipps--;
                         }
-                        Console.WriteLine("------------------------------");
-                    Console.ReadLine();
-                    Console.ResetColor();
-                    Console.Clear();
-
-                    if (counter == 4)
-                    {
-                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
                     }
-                    IEnumerable<Teachers> page4 = teachers.Skip(18).Take(6);
-                        Console.WriteLine("------------------------------");
-                        foreach (Teachers t in page4)
-                        {
-                            Console.WriteLine(t);
-                        }
-                        Console.WriteLine("------------------------------");
-                    Console.ReadLine();
-                    Console.ResetColor();
-                    Console.Clear();
-
-                    if (counter == 5)
-                    {
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    IEnumerable<Teachers> page5 = teachers.Skip(24).Take(6);
-                        Console.WriteLine("------------------------------");
-                        foreach (Teachers t in page5)
-                        {
-                            Console.WriteLine(t);
-                        }
-                        Console.WriteLine("------------------------------");
-                    Console.ReadLine();
-                    Console.ResetColor();
-                    Console.Clear();
-
-
-                    ConsoleKeyInfo keyInfo = Console.ReadKey();
-                    key = keyInfo.Key;
-                
-                    switch (key)    //обхід меню стрілочками
-                    {
-                        case (ConsoleKey)ConsoleKey.RightArrow:
-                            {
-                                if (counter < 5) { counter++; }
-                                else { counter = 1; }
-                                break;
-                            }
-                        case (ConsoleKey)ConsoleKey.LeftArrow:
-                            {
-                                if (counter > 1) { counter--; }
-                                else { counter = 5; }
-                                break;
-                            }
-                    }
-
-
-                } while (key != ConsoleKey.Enter);
-
-                Console.Clear();
+                }
             }
-
-
-            
-
-            
-
-
-            //Console.WriteLine("Enter number of page");
-            //int num = int.Parse(Console.ReadLine());
-            //IEnumerable<Teachers> page = teachers.Skip(startPageNumber+numberItemsOnPage*num - numberItemsOnPage)
-            //    .Take(numberItemsOnPage);
-            //Console.WriteLine("------------------------------");
-            //foreach (Teachers t in page)
-            //{
-            //    Console.WriteLine(t);
-            //}
-            //Console.WriteLine("------------------------------");
-
         }
     }
 }
