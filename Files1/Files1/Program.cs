@@ -33,59 +33,25 @@ namespace Files1
             Console.ResetColor();
             Console.WriteLine("----------------------------------------------------------");
             
-            // Проходимо циклом по всіх файлах, щоб знайти файли, які містять шукане слово
-            //for (int i = 0; i < fileEntries.Length; i++)
-            //{
-            //    FileStream fs = new FileStream(fileEntries[i], FileMode.Open, FileAccess.Read);
-            //    byte[] bytes = new byte[fs.Length];
-            //    fs.Read(bytes, 0, bytes.Length);
-            //    string str = Encoding.Default.GetString(bytes);
-                
-            //    // Якщо в файлі міститься шукане слово, виводимо назву файла і кількість входжень слова
-            //    if (str.Contains(word))
-            //        {
-            //            // Підраховуємо кількість входжень    
-            //            int count = (str.Length - str.Replace(word, "").Length) / word.Length;
-            //            // Відділяємо від повного шляху тільки на    зву файла
-            //            string fileName = Path.GetFileName(fileEntries[i]);
-            //            Console.WriteLine("|   {0,-21}           |{1,15}     |",fileName, count);
-            //        }
-                
-            //    // Закриваємо файловий потік
-            //    fs.Dispose();
-            //}
-            //Console.WriteLine("---------------------------------------------------------");
-
-
+            
             for (int i = 0; i < fileEntries.Length; i++)
             {
-                FileStream fs = new FileStream(fileEntries[i], FileMode.Open, FileAccess.ReadWrite);
-                byte[] bytes = new byte[fs.Length];
-                fs.Read(bytes, 0, bytes.Length);
-                string str = Encoding.Default.GetString(bytes);
-                // Якщо в файлі міститься шукане слово, виводимо назву файла і кількість входжень слова
-                if (str.Contains(word))
+                string st = string.Empty;   // сюди будемо зчитувати весь вміст файла
+                StreamReader read = File.OpenText(fileEntries[i]);  // відкриваємо файл для читання
+                st = read.ReadToEnd();  // зчитуємо файл в рядок
+                if(st.Contains(word))   // якщо файл містить шукане слово, то...
                 {
-                    // Підраховуємо кількість входжень    
-                    int count = (str.Length - str.Replace(word, "").Length) / word.Length;
-                    // Відділяємо від повного шляху тільки на    зву файла
-                    string fileName = Path.GetFileName(fileEntries[i]);
-                    Console.WriteLine("|   {0,-21}           |{1,15}     |", fileName, count);
+                    int count = (st.Length - st.Replace(word, "").Length) / word.Length;    // ...рахуємо кількість входжень
+                    string fileName = Path.GetFileName(fileEntries[i]);     // ...виділяємо назву файла із повного шляху
+                    Console.WriteLine("|   {0,-21}           |{1,15}     |", fileName, count);  // ...виводимо знайдену інформацію
                 }
-                    string newStr = str.Replace(word, newWord);
-                    byte[] newBytes = Encoding.UTF8.GetBytes(newStr);
-                //fs.Write(bytes, 0, bytes.Length);
-                //string str = Encoding.Default.GetString(bytes);
-
-                
-                fs.Write(newBytes);
-                // Закриваємо файловий потік
-                fs.Dispose();
-
+                read.Dispose(); // закриваємо файл
+                st = st.Replace(word, newWord); // у зчитаному рядку замінюємо всі знайдені слова на запропоноване слово
+                StreamWriter write = new StreamWriter(fileEntries[i]);  // відкриваємо файл для запису нового вмісту
+                write.Write(st);    // записуємо рядок у файл
+                write.Dispose();    // закриваємо файл
             }
             Console.WriteLine("---------------------------------------------------------");
-
-
         }
     }
 }
