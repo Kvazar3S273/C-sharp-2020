@@ -50,7 +50,7 @@ namespace Files2_TASK1
             // Створюємо повний шлях до файлу з назвою самого файлу
             string fullName = path + fileName;
 
-            
+            // Перевіряємо чи є такий файл в тій папці
             if(!File.Exists(fullName))
             {
                 Console.WriteLine("Даного файла в папці немає!");
