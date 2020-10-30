@@ -57,13 +57,13 @@ namespace Files2_TASK2
             //Student newStudent = new Student(newSurname, newName, newGroup);
             //allStudents.Add(newStudent);
 
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Console.WriteLine("\nСписок після додавання нового студента:");
-            //Console.ResetColor();
-            //foreach (var student in allStudents)
-            //{
-            //    Console.WriteLine(student);
-            //}
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nСписок після додавання нового студента:");
+            Console.ResetColor();
+            foreach (var student in allStudents)
+            {
+                Console.WriteLine(student);
+            }
 
 
 
