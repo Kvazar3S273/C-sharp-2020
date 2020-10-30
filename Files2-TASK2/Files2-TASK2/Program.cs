@@ -39,24 +39,26 @@ namespace Files2_TASK2
                 Console.WriteLine(student);
             }
 
-            //Console.ForegroundColor = ConsoleColor.Yellow;
-            //Console.WriteLine("\n\nВведіть прізвище нового студента:");
-            //Console.ResetColor();
-            //string newSurname = Console.ReadLine();
+            // Додаємо нового студента
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n\nВведіть прізвище нового студента:");
+            Console.ResetColor();
+            string newSurname = Console.ReadLine();
 
-            //Console.ForegroundColor = ConsoleColor.Yellow;
-            //Console.WriteLine("Введіть ім\'я нового студента:");
-            //Console.ResetColor();
-            //string newName = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Введіть ім\'я нового студента:");
+            Console.ResetColor();
+            string newName = Console.ReadLine();
 
-            //Console.ForegroundColor = ConsoleColor.Yellow;
-            //Console.WriteLine("Введіть групу нового студента:");
-            //Console.ResetColor();
-            //string newGroup = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Введіть групу нового студента:");
+            Console.ResetColor();
+            string newGroup = Console.ReadLine();
 
-            //Student newStudent = new Student(newSurname, newName, newGroup);
-            //allStudents.Add(newStudent);
+            Student newStudent = new Student(newSurname, newName, newGroup);
+            allStudents.Add(newStudent);
 
+            // Виводимо новий список
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\nСписок після додавання нового студента:");
             Console.ResetColor();
@@ -65,98 +67,21 @@ namespace Files2_TASK2
                 Console.WriteLine(student);
             }
 
-
-
-
-
+            // Видаляємо одного студента
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\nВведіть прізвище студента, якого потрібно видалити");
             Console.ResetColor();
             string deletedStudent = Console.ReadLine();
-
-
-
-
 
             for (int i = 0; i < allStudents.Count; i++)
             {
                 if (allStudents[i].Surname == deletedStudent)
                 {
                     allStudents.RemoveAt(i);
-                    Console.WriteLine("Видалено нахєр!");
+                    Console.WriteLine("Видалено!");
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("Такого прізвища немає у списку!");
-                }
             }
-
-
-
-
-
-            //bool check = false;
-            //while (!check)
-            //{
-            //    check = true;
-            //    try
-            //    {
-            //        for (int i = 0; i < allStudents.Count; i++)
-            //        {
-            //            if (allStudents[i].Surname == deletedStudent)
-            //            {
-            //                allStudents.RemoveAt(i);
-            //                //check = true;
-            //            }
-            //            else
-            //            {
-            //                throw new SurnameEx();
-            //            }
-            //        }
-            //    }
-            //    catch (SurnameEx ex)
-            //    {
-            //        Console.WriteLine(ex.Message);
-            //        check = false;
-            //        Console.WriteLine("Повторно введіть прізвище");
-            //        deletedStudent = Console.ReadLine();
-            //    }
-            //}
-
-
-            //Console.WriteLine("----------------------\n");
-            //bool flag = false;
-            //do
-            //{
-            //    try
-            //    {
-
-            //        Console.WriteLine("Введіть прізвище студента,якого треба видалити");
-            //        string del = string.Empty;
-            //        del = Console.ReadLine();
-
-            //        for (int i = 0; i < allStudents.Count; i++)
-            //        {
-            //            if (allStudents[i].Surname == del)
-            //            {
-            //                allStudents.RemoveAt(i);
-            //                flag = true;
-            //            }
-            //            else
-            //            {
-            //                throw new Exception();
-            //            }
-            //        }
-            //    }
-            //    catch (Exception)
-            //    {
-            //        Console.WriteLine("Такого прізвища немає у списку!");
-            //    }
-            //} while (!flag);
-
-
-
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\nНовий список студентів:");
@@ -165,7 +90,8 @@ namespace Files2_TASK2
             {
                 Console.WriteLine(student);
             }
-
+            
+            // Серіалізуємо об"єкти
             using (FileStream fs = new FileStream(@"g:\step\json2.json", FileMode.Truncate))
             {
                 dcjs.WriteObject(fs, allStudents);
@@ -173,11 +99,6 @@ namespace Files2_TASK2
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n\nДані серіалізовано!");
             Console.ResetColor();
-            
         }
-    }
-    class SurnameEx : ApplicationException
-    {
-        public override string Message => "Такого прізвища немає у списку!";
     }
 }
