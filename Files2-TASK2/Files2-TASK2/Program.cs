@@ -39,53 +39,58 @@ namespace Files2_TASK2
                 Console.WriteLine(student);
             }
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\n\nВведіть прізвище нового студента:");
-            Console.ResetColor();
-            string newSurname = Console.ReadLine();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Введіть ім\'я нового студента:");
-            Console.ResetColor();
-            string newName = Console.ReadLine();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Введіть групу нового студента:");
-            Console.ResetColor();
-            string newGroup = Console.ReadLine();
-
-            Student newStudent = new Student(newSurname, newName, newGroup);
-            allStudents.Add(newStudent);
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\nСписок після додавання нового студента:");
-            Console.ResetColor();
-            foreach (var student in allStudents)
-            {
-                Console.WriteLine(student);
-            }
-
-
-
-
-
+            //Console.ForegroundColor = ConsoleColor.Yellow;
+            //Console.WriteLine("\n\nВведіть прізвище нового студента:");
+            //Console.ResetColor();
+            //string newSurname = Console.ReadLine();
 
             //Console.ForegroundColor = ConsoleColor.Yellow;
-            //Console.WriteLine("\nВведіть прізвище студента, якого потрібно видалити");
+            //Console.WriteLine("Введіть ім\'я нового студента:");
             //Console.ResetColor();
-            //string deletedStudent = Console.ReadLine();
+            //string newName = Console.ReadLine();
 
-            //for (int i = 0; i < allStudents.Count; i++)
+            //Console.ForegroundColor = ConsoleColor.Yellow;
+            //Console.WriteLine("Введіть групу нового студента:");
+            //Console.ResetColor();
+            //string newGroup = Console.ReadLine();
+
+            //Student newStudent = new Student(newSurname, newName, newGroup);
+            //allStudents.Add(newStudent);
+
+            //Console.ForegroundColor = ConsoleColor.Red;
+            //Console.WriteLine("\nСписок після додавання нового студента:");
+            //Console.ResetColor();
+            //foreach (var student in allStudents)
             //{
-            //    if (allStudents[i].Surname == deletedStudent)
-            //    {
-            //        allStudents.RemoveAt(i);
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Такого прізвища немає у списку!");
-            //    }
+            //    Console.WriteLine(student);
             //}
+
+
+
+
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\nВведіть прізвище студента, якого потрібно видалити");
+            Console.ResetColor();
+            string deletedStudent = Console.ReadLine();
+
+
+
+
+
+            for (int i = 0; i < allStudents.Count; i++)
+            {
+                if (allStudents[i].Surname == deletedStudent)
+                {
+                    allStudents.RemoveAt(i);
+                    Console.WriteLine("Видалено нахєр!");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Такого прізвища немає у списку!");
+                }
+            }
 
 
 
@@ -102,7 +107,7 @@ namespace Files2_TASK2
             //            if (allStudents[i].Surname == deletedStudent)
             //            {
             //                allStudents.RemoveAt(i);
-            //                check = true;
+            //                //check = true;
             //            }
             //            else
             //            {
@@ -153,13 +158,13 @@ namespace Files2_TASK2
 
 
 
-            //Console.ForegroundColor = ConsoleColor.Red;
-            //Console.WriteLine("\nНовий список студентів:");
-            //Console.ResetColor();
-            //foreach (var student in allStudents)
-            //{
-            //    Console.WriteLine(student);
-            //}
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nНовий список студентів:");
+            Console.ResetColor();
+            foreach (var student in allStudents)
+            {
+                Console.WriteLine(student);
+            }
 
             using (FileStream fs = new FileStream(@"g:\step\json2.json", FileMode.Truncate))
             {
@@ -168,7 +173,6 @@ namespace Files2_TASK2
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n\nДані серіалізовано!");
             Console.ResetColor();
-
             
         }
     }

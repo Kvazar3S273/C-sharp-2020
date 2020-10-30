@@ -15,7 +15,10 @@ namespace Files2_TASK2
             Name = name;
             Group = group;
         }
+        public Student()
+        {
 
+        }
         public override string ToString()
         {
             return Surname + " " + Name + " " + Group;
