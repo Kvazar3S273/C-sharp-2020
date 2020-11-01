@@ -1,0 +1,42 @@
+[
+  {
+    "PaymentForDay": 300,
+    "FullDayCount": 0,
+    "FineForDay": 100,
+    "FineDayCount": 1,
+    "SumPaymentNoFine": 1200,
+    "SumFine": 100,
+    "FullPaymentSum": 1300,
+    "FlagSerialize": false
+  },
+  {
+    "PaymentForDay": 350,
+    "FullDayCount": 0,
+    "FineForDay": 110,
+    "FineDayCount": 2,
+    "SumPaymentNoFine": 1750,
+    "SumFine": 220,
+    "FullPaymentSum": 1970,
+    "FlagSerialize": false
+  },
+  {
+    "PaymentForDay": 200,
+    "FullDayCount": 0,
+    "FineForDay": 120,
+    "FineDayCount": 3,
+    "SumPaymentNoFine": 1200,
+    "SumFine": 360,
+    "FullPaymentSum": 1560,
+    "FlagSerialize": false
+  },
+  {
+    "PaymentForDay": 400,
+    "FullDayCount": 0,
+    "FineForDay": 140,
+    "FineDayCount": 4,
+    "SumPaymentNoFine": 2800,
+    "SumFine": 560,
+    "FullPaymentSum": 3360,
+    "FlagSerialize": false
+  }
+]

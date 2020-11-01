@@ -1,0 +1,10 @@
+{
+  "PaymentForDay": "400",
+  "FullDayCount": "7",
+  "FineForDay": "140",
+  "FineDayCount": "4",
+  "SumPaymentNoFine": "2800",
+  "SumFine": "560",
+  "FullPaymentSum": "3360",
+  "FlagSerialize": false
+}
