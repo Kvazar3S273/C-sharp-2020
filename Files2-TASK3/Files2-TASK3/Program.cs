@@ -19,23 +19,23 @@ namespace Files2_TASK3
 
             // Створюємо рахунок перший раз і серіалізуємо його в файл "j3.json"
             // -----------------------------------------------------------------
-            BillToPay btp = new BillToPay("400", "7", "140", "4");
-            string jsonString;
+            //BillToPay btp = new BillToPay("400", "7", "140", "4");
+            //string jsonString;
 
-            var options = new JsonSerializerOptions
-            {
-                IgnoreReadOnlyProperties = false,
-                WriteIndented = true
-            };
-            jsonString = JsonSerializer.Serialize(btp, options);
-            File.WriteAllText(@"D:\0 3x4\000 Роздрук\с++\0 Repository\C#\Files2-TASK3\Files2-TASK3\jjj.json", jsonString);
+            //var options = new JsonSerializerOptions
+            //{
+            //    IgnoreReadOnlyProperties = false,
+            //    WriteIndented = true
+            //};
+            //jsonString = JsonSerializer.Serialize(btp, options);
+            //File.WriteAllText(@"D:\0 3x4\000 Роздрук\с++\0 Repository\C#\Files2-TASK3\Files2-TASK3\jjj.json", jsonString);
 
             // ------------------------------------------------------------------
 
             // Десеріалізація--------------------------------------------------
-            //string jsonString = File.ReadAllText(@"D:\0 3x4\000 Роздрук\с++\0 Repository\C#\Files2-TASK3\Files2-TASK3\jjj.json");
-            //BillToPay btp = JsonSerializer.Deserialize<BillToPay>(jsonString);
-            //Console.WriteLine(btp);
+            string jsonString = File.ReadAllText(@"D:\0 3x4\000 Роздрук\с++\0 Repository\C#\Files2-TASK3\Files2-TASK3\jjj.json");
+            BillToPay btp = JsonSerializer.Deserialize<BillToPay>(jsonString);
+            Console.WriteLine(btp);
 
             //-----------------------------------------------------------------
 
