@@ -17,9 +17,11 @@ namespace Files2_TASK3
             //BillToPay btp = new BillToPay("400", "7", "140", "4");
             //string jsonString;
 
+            //// Прапорець керування форматом серіалізації (false - серіалізує всі поля, true - всі, крім обраховуваних)
+            //bool flag = true;
             //var options = new JsonSerializerOptions
             //{
-            //    IgnoreReadOnlyProperties = false,
+            //    IgnoreReadOnlyProperties = flag,
             //    WriteIndented = true
             //};
             //jsonString = JsonSerializer.Serialize(btp, options);
@@ -29,13 +31,9 @@ namespace Files2_TASK3
 
 
             //// Десеріалізація--------------------------------------------------
-                                  
-
             string jsonString = File.ReadAllText(@"D:\0 3x4\000 Роздрук\с++\0 Repository\C#\Files2-TASK3\Files2-TASK3\jjj.json");
             //Console.WriteLine(jsonString);
-
             BillToPay btp = new BillToPay();
-
             btp = JsonSerializer.Deserialize<BillToPay>(jsonString);
             Console.WriteLine(btp);
 
