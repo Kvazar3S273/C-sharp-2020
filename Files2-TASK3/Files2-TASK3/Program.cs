@@ -22,11 +22,11 @@ namespace Files2_TASK3
             //BillToPay btp = new BillToPay("400", "7", "140", "4");
             //string jsonString;
 
-            //var options = new JsonSerializerOptions
-            //{
-            //    IgnoreReadOnlyProperties = false,
-            //    WriteIndented = true
-            //};
+            var options = new JsonSerializerOptions
+            {
+                IgnoreReadOnlyProperties = true,
+                WriteIndented = true
+            };
             //jsonString = JsonSerializer.Serialize(btp, options);
             //File.WriteAllText(@"D:\0 3x4\000 Роздрук\с++\0 Repository\C#\Files2-TASK3\Files2-TASK3\jjj.json", jsonString);
 
@@ -34,7 +34,12 @@ namespace Files2_TASK3
 
             // Десеріалізація--------------------------------------------------
             string jsonString = File.ReadAllText(@"D:\0 3x4\000 Роздрук\с++\0 Repository\C#\Files2-TASK3\Files2-TASK3\jjj.json");
-            BillToPay btp = JsonSerializer.Deserialize<BillToPay>(jsonString);
+            //Console.WriteLine(jsonString);
+
+            BillToPay btp = new BillToPay();
+            btp = JsonSerializer.Deserialize<BillToPay>(jsonString, options);
+
+            //BillToPay btp = JsonSerializer.Deserialize<BillToPay>(jsonString);
             Console.WriteLine(btp);
 
             //-----------------------------------------------------------------

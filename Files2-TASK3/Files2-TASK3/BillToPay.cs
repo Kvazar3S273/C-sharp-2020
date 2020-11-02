@@ -49,9 +49,15 @@ namespace Files2_TASK3
         }
         public override string ToString()
         {
-            return "\nСума до оплати без штрафа " + SumPaymentNoFine 
-                + "\nСума штрафа " + SumFine + "\nЗагальна сума до оплати " + FullPaymentSum;
+            return "\nОплата за 1 день - " + PaymentForDay 
+                + "\nКількість днів - " + FullDayCount 
+                + "\nШтраф за 1 день протермінування - " + FineForDay 
+                + "\nКількість протермінованих днів - " + FineDayCount 
+                + "\nСума до оплати без штрафа - " + SumPaymentNoFine 
+                + "\nСума штрафа - " + SumFine 
+                + "\nЗагальна сума до оплати - " + FullPaymentSum;
         }
+
 
         //[OnSerializing]
         //public void ToSerializeWhenFalse()
