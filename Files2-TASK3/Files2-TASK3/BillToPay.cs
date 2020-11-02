@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Xml.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace Files2_TASK3
 {
@@ -36,6 +32,7 @@ namespace Files2_TASK3
         {
         }
 
+        
         public BillToPay(string paymentForDay, string fullDayCount, string fineForDay, string fineDayCount)
         {
             PaymentForDay = paymentForDay;
@@ -57,26 +54,6 @@ namespace Files2_TASK3
                 + "\nСума штрафа - " + SumFine 
                 + "\nЗагальна сума до оплати - " + FullPaymentSum;
         }
-
-
-        //[OnSerializing]
-        //public void ToSerializeWhenFalse()
-        //{
-        //    SumPaymentNoFine = SumPaymentNoFine.Replace(SumPaymentNoFine,"-----------------");
-        //    SumFine = SumFine.Replace(SumFine, "-----------------");
-        //    FullPaymentSum = FullPaymentSum.Replace(FullPaymentSum, "-----------------");
-        //}
-
-        //[OnDeserialized]
-        //public void ToDeserializeWhenFalse()
-        //{
-        //    this.SumPaymentNoFine = SumPaymentNoFine;
-        //    this.SumFine = SumFine;
-        //    this.FullPaymentSum = FullPaymentSum;
-        //}
-
-
-
 
     }
 }

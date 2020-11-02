@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Serialization;
 
 namespace Files2_TASK3
 {
@@ -17,32 +12,34 @@ namespace Files2_TASK3
             Console.OutputEncoding = Encoding.Unicode;
             Console.InputEncoding = Encoding.Unicode;
 
-            // Створюємо рахунок перший раз і серіалізуємо його в файл "j3.json"
-            // -----------------------------------------------------------------
+            //// Створюємо рахунок перший раз і серіалізуємо його в файл "jjj.json"
+            //// -----------------------------------------------------------------
             //BillToPay btp = new BillToPay("400", "7", "140", "4");
             //string jsonString;
 
-            var options = new JsonSerializerOptions
-            {
-                IgnoreReadOnlyProperties = true,
-                WriteIndented = true
-            };
+            //var options = new JsonSerializerOptions
+            //{
+            //    IgnoreReadOnlyProperties = false,
+            //    WriteIndented = true
+            //};
             //jsonString = JsonSerializer.Serialize(btp, options);
             //File.WriteAllText(@"D:\0 3x4\000 Роздрук\с++\0 Repository\C#\Files2-TASK3\Files2-TASK3\jjj.json", jsonString);
 
-            // ------------------------------------------------------------------
+            //// ------------------------------------------------------------------
 
-            // Десеріалізація--------------------------------------------------
+
+            //// Десеріалізація--------------------------------------------------
+                                  
+
             string jsonString = File.ReadAllText(@"D:\0 3x4\000 Роздрук\с++\0 Repository\C#\Files2-TASK3\Files2-TASK3\jjj.json");
             //Console.WriteLine(jsonString);
 
             BillToPay btp = new BillToPay();
-            btp = JsonSerializer.Deserialize<BillToPay>(jsonString, options);
 
-            //BillToPay btp = JsonSerializer.Deserialize<BillToPay>(jsonString);
+            btp = JsonSerializer.Deserialize<BillToPay>(jsonString);
             Console.WriteLine(btp);
 
-            //-----------------------------------------------------------------
+            ////-----------------------------------------------------------------
 
 
 
@@ -58,7 +55,7 @@ namespace Files2_TASK3
 
 
 
-
+            // Пробував робити через xml....
 
             ////////////BillToPay btp = new BillToPay("400", "7", "140", "4");
             ////////////BillToPay.FlagSerialize = true;
