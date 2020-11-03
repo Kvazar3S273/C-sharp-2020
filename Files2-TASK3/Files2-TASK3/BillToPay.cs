@@ -31,7 +31,6 @@ namespace Files2_TASK3
         public BillToPay()
         {
         }
-
         
         public BillToPay(string paymentForDay, string fullDayCount, string fineForDay, string fineDayCount)
         {
