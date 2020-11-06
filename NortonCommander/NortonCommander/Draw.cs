@@ -23,16 +23,36 @@ namespace NortonCommander
             // 196 ──── (4)
             // 196 ─── (3)
             // 196 ──────────── (12)
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
 
             Console.SetCursorPosition(startX, startY);
-            Console.WriteLine("╔════════════╤════════════╤════════════╗");
-            for (int i = 1; i < 20; i++)
+            Console.WriteLine("╔════════════╤═════════╤════════╤══════╗");
+            Console.SetCursorPosition(startX, startY+1);
+            Console.Write("║    ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Name");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("    │   ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Size"); 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("  │  ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Date");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("  │ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Time");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write(" ║");
+
+            for (int i = 2; i < 20; i++)
             {
                 Console.SetCursorPosition(startX, startY + i);
-                Console.WriteLine("║            │            │            ║");
+                Console.WriteLine("║            │         │        │      ║");
             }
             Console.SetCursorPosition(startX, startY + 20);
-            Console.WriteLine("╟────────────┴────────────┴────────────╢");
+            Console.WriteLine("╟────────────┴─────────┴────────┴──────╢");
             Console.SetCursorPosition(startX, startY + 21);
             Console.WriteLine("║                                      ║");
             Console.SetCursorPosition(startX, startY + 22);
