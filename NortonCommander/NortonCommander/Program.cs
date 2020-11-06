@@ -48,43 +48,11 @@ namespace NortonCommander
             Console.WriteLine("D:\\");
             Console.ResetColor();
 
-            // ► Alt+16
+            // Виводимо каталоги і файли в таблицю
+            ShowFF showFoldersFiles = new ShowFF();
+            showFoldersFiles.Show("C");
 
-            string discName = "G";
-            string dirName = discName + ":\\";
-            Console.WriteLine();
-
-            if (Directory.Exists(dirName))
-            {
-                Console.SetCursorPosition(1, 5);
-                Console.BackgroundColor = ConsoleColor.DarkBlue;
-                string[] dirs = Directory.GetDirectories(dirName);
-                for (int i = 0; i < dirs.Length; i++)
-                {
-                    Console.SetCursorPosition(1, 5 + i);
-                    dirs[i] = dirs[i].Substring(3);
-                    if (dirs[i].Length>5)
-                    {
-                        dirs[i].TrimEnd();
-                        dirs[i] += "►";
-                    Console.WriteLine(dirs[i]);
-                    }
-                    else
-                        Console.WriteLine(dirs[i]);
-
-                }
-                string[] files = Directory.GetFiles(dirName);
-                //string expansionFiles = @"^.+\.([a-z0-9_-]{2,4})";
-                for (int i = 0; i < files.Length; i++)
-                {
-                    Console.SetCursorPosition(1, 5 + dirs.Length + i);
-                    files[i] = files[i].Substring(3);
-                    int indexOfLastPoint = files[i].LastIndexOf("."); // Індекс крапочки перед розширенням
-                    string expansion = files[i].Substring(indexOfLastPoint+1); // Отримуємо розширення
-                    files[i] = files[i].Substring(0, files[i].Length - expansion.Length-1);
-                    Console.Write("{0,-6}  {1,4}",files[i],expansion);
-                }
-            }
+            
 
             // Вивід інформації про диск
             //Drives disc = new Drives();

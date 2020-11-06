@@ -23,6 +23,7 @@ namespace NortonCommander
             // 196 ──── (4)
             // 196 ─── (3)
             // 196 ──────────── (12)
+            // ► Alt+16
             Console.BackgroundColor = ConsoleColor.DarkBlue;
 
             Console.SetCursorPosition(startX, startY);
