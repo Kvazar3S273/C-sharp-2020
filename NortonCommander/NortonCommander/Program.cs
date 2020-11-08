@@ -48,11 +48,13 @@ namespace NortonCommander
             Console.WriteLine("D:\\");
             Console.ResetColor();
 
-            // Виводимо каталоги і файли в таблицю
+            // Виводимо каталоги і файли в таблицю 
             ShowFF showFoldersFiles = new ShowFF();
-            showFoldersFiles.Show("C");
+            showFoldersFiles.Show("G", "left");     // Вивід в лівому вікні
+            showFoldersFiles.Show("D", "right");    // Вивід в правому вікні
 
-            
+
+
 
             // Вивід інформації про диск
             //Drives disc = new Drives();
@@ -65,6 +67,14 @@ namespace NortonCommander
             Draw footer = new Draw();
             footer.DrawFooter();
             Console.WriteLine();
+
+
+
+            temp temp = new temp();
+            temp.MenuTemp();
+            //temp.PaginationTemp();
+
+
         }
     }
 }
