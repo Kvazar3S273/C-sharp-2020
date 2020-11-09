@@ -71,9 +71,9 @@ namespace NortonCommander
 
 
             temp temp = new temp();
-            temp.MenuTemp();
+            //temp.MenuTemp();
             //temp.PaginationTemp();
-
+            temp.MenuPlusPagination();
 
         }
     }
