@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace NortonCommander
@@ -8,6 +9,110 @@ namespace NortonCommander
     class ShowFF
     {
         // Show Folders and Files
+
+        public void Show1(string name, string side)
+        {
+            string discName = name;
+            string dirName = discName + ":\\";
+            Console.WriteLine();
+
+            int position = 1;
+            switch (side)
+            {
+                case "left":
+                    position = 1;
+                    break;
+                case "right":
+                    position = 41;
+                    break;
+                default:
+                    position = 1;
+                    break;
+            }
+
+            //string dirName = "C:\\Program Files";
+            string[] dirs = Directory.GetDirectories(dirName);  // Отримуємо масив каталогів
+
+            int skipps = 0;
+            int numberItemsOnPage = 18;
+
+            var collection = dirs.Skip(skipps * numberItemsOnPage).Take(numberItemsOnPage);
+            while (true)
+            {
+                ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
+                do
+                {
+                    //Console.Clear();
+                    Console.CursorVisible = false;
+                    collection = dirs.Skip(skipps * numberItemsOnPage).Take(numberItemsOnPage);
+                    if (collection.Count() <= 0)
+                    {
+                        skipps--;
+                        break;
+                    }
+
+                    //Console.WriteLine("------------------------------");
+                    //foreach (var item in collection)
+                    //{
+                    //    Console.WriteLine(item);
+                    //}
+                    //Console.WriteLine("------------------------------");
+
+                    var outputDirs = collection.ToArray();
+                    for (int i = 0; i < outputDirs.Length; i++)
+                    {
+                        Console.SetCursorPosition(position, 5 + i);
+                        string path = outputDirs[i]; // Отримуємо повний шлях до підпапки
+                        outputDirs[i] = outputDirs[i].Substring(3);     // Обрізаємо початок шляху до каталога
+                        if (outputDirs[i].Length > 11)            // Якщо назва довга, обрізаємо її
+                        {
+                            outputDirs[i] = outputDirs[i].Substring(0, 11);
+                            outputDirs[i] += "►";
+
+                            Console.WriteLine("{0,-10}│►SUB-DIR◄│{1,8:dd/MM/yy}│{2,6:hh:mm}"
+                                , outputDirs[i]
+                                , new DirectoryInfo(path).CreationTime
+                                , new DirectoryInfo(path).CreationTime);
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0,-12}│►SUB-DIR◄│{1,8:dd/MM/yy}│{2,6:hh:mm}"
+                                , outputDirs[i]
+                                , new DirectoryInfo(path).CreationTime
+                                , new DirectoryInfo(path).CreationTime);
+                        }
+                    }
+
+
+
+                    keyInfo = Console.ReadKey();
+                    if (keyInfo.Key == ConsoleKey.Escape)
+                    {
+                        return;
+                    }
+                } while (keyInfo.Key != ConsoleKey.UpArrow && keyInfo.Key != ConsoleKey.DownArrow || keyInfo.Key == ConsoleKey.Escape);
+
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.DownArrow:
+                        {
+                            if (skipps < dirs.Count() / 5)
+                            {
+                                skipps++;
+                            }
+                            break;
+                        }
+                    case ConsoleKey.UpArrow:
+                        {
+                            if (skipps > 0)
+                            {
+                                skipps--;
+                            }
+                            break;
+                        }
+                }
+            }
+        }
 
         public void Show(string name, string side)
         {
@@ -33,7 +138,10 @@ namespace NortonCommander
             {
                 Console.SetCursorPosition(position, 5);    // Задаємо позицію, з якої будемо виводити першу інформацію
                 Console.BackgroundColor = ConsoleColor.DarkBlue;    // Колір фону
+
+                
                 string[] dirs = Directory.GetDirectories(dirName);  // Отримуємо масив каталогів
+
                 for (int i = 0; i < dirs.Length; i++)
                 {
                     Console.SetCursorPosition(position, 5 + i);
@@ -57,6 +165,7 @@ namespace NortonCommander
                             , new DirectoryInfo(path).CreationTime);
                     }
                 }
+                
                 string[] files = Directory.GetFiles(dirName);
 
                 for (int i = 0; i < files.Length; i++)

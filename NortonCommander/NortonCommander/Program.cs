@@ -50,8 +50,8 @@ namespace NortonCommander
 
             // Виводимо каталоги і файли в таблицю 
             ShowFF showFoldersFiles = new ShowFF();
-            showFoldersFiles.Show("G", "left");     // Вивід в лівому вікні
-            showFoldersFiles.Show("D", "right");    // Вивід в правому вікні
+            showFoldersFiles.Show1("D", "left");     // Вивід в лівому вікні
+            showFoldersFiles.Show1("D", "right");    // Вивід в правому вікні
 
 
 
@@ -68,12 +68,13 @@ namespace NortonCommander
             footer.DrawFooter();
             Console.WriteLine();
 
+            Console.ReadKey();
 
 
             temp temp = new temp();
             //temp.MenuTemp();
             //temp.PaginationTemp();
-            temp.MenuPlusPagination();
+            //temp.MenuPlusPagination();
 
         }
     }
