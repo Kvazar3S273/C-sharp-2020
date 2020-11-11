@@ -16,8 +16,8 @@ namespace NortonCommander
 
         public FileList()
         {
-            //root = Directory.GetCurrentDirectory();
-            root = "D:\\";
+            root = Directory.GetCurrentDirectory();
+            //root = "D:\\";
             files = Directory.GetFiles(root).ToList<string>();
             directories = Directory.GetDirectories(root).ToList<string>();
             position = 0;

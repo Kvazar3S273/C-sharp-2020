@@ -14,7 +14,6 @@ namespace NortonCommander
         {
             Console.OutputEncoding = Encoding.Unicode;
             Console.InputEncoding = Encoding.Unicode;
-            int a = 0;
             Console.SetWindowPosition(0, 0);
             Draw d = new Draw();
 
