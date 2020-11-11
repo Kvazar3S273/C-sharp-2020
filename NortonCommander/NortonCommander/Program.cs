@@ -1,81 +1,92 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NortonCommander;
 
-// Консоль 150х60
-// 80x25
 namespace NortonCommander
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.Unicode;
+            Console.InputEncoding = Encoding.Unicode;
+            int a = 0;
+            Console.SetWindowPosition(0, 0);
+            Draw d = new Draw();
 
-            // Вивід заголовка
-            Draw title = new Draw();
-            title.Title();
+            FileList[] f = new FileList[2];
+            f[0] = new FileList();
+            f[1] = new FileList();
+            d.FolderInfo(f);
+            d.Files(f, false, false);
 
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            bool side = true;
+            int main_directory = 0;
 
-            // Вивід лівого вікна
-            Draw tableLeft = new Draw();
-            tableLeft.DrawOnceTable(0, 3);
-            // Вивід правого вікна
-            Draw tableRight = new Draw();
-            tableRight.DrawOnceTable(40, 3);
-            
-            Draw discChoice = new Draw();
-            
-            // Вибір диска в лівому вікні
-            //discChoice.DrawDiscChoise(1, 7);
+            d.Files(f, side, true);
+            d.FileInfo(f[main_directory], true);
 
-            // Вибір диска в правому вікні
-            //discChoice.DrawDiscChoise(41, 7);
-
-            // Виводимо назву диска в лівому вікні 
-            Console.SetCursorPosition(19, 3);
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("D:\\");
-            Console.ResetColor();
-
-            // Виводимо назву диска в правому вікні 
-            Console.SetCursorPosition(59, 3);
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("D:\\");
-            Console.ResetColor();
-
-            // Виводимо каталоги і файли в таблицю 
-            ShowFF showFoldersFiles = new ShowFF();
-            showFoldersFiles.Show1("D", "left");     // Вивід в лівому вікні
-            showFoldersFiles.Show1("D", "right");    // Вивід в правому вікні
-
-
-
-
-            // Вивід інформації про диск
-            //Drives disc = new Drives();
-            //Console.WriteLine("Choice disc: A-B-C-D-E-F-G-H-I");
-            //string discName = Console.ReadLine();
-            //disc.ShowDrive(discName);
-
-            // Підвал
-            Console.ResetColor();
-            Draw footer = new Draw();
-            footer.DrawFooter();
-            Console.WriteLine();
-
-            Console.ReadKey();
-
-
-            temp temp = new temp();
-            //temp.MenuTemp();
-            //temp.PaginationTemp();
-            //temp.MenuPlusPagination();
-
+            while (true)
+            {
+                switch (Console.ReadKey().Key)
+                {
+                    case ConsoleKey.DownArrow:
+                        {
+                            f[main_directory].plusPos();
+                            break;
+                        }
+                    case ConsoleKey.UpArrow:
+                        {
+                            f[main_directory].minusPos();
+                            break;
+                        }
+                    case ConsoleKey.LeftArrow:
+                        {
+                            f[main_directory].goLeftPos();
+                            break;
+                        }
+                    case ConsoleKey.RightArrow:
+                        {
+                            f[main_directory].goRightPos();
+                            break;
+                        }
+                    case ConsoleKey.Tab:
+                        {
+                            if (main_directory == 0)
+                            {
+                                main_directory = 1;
+                            }
+                            else
+                            {
+                                main_directory = 0;
+                            }
+                            d.Files(f, side, false);
+                            side = !side;
+                            break;
+                        }
+                    case ConsoleKey.Enter:
+                        {
+                            f[main_directory].GoTo();
+                            d = new Draw();
+                            d.FolderInfo(f);
+                            d.Files(f, !side, false);
+                            break;
+                        }
+                    case ConsoleKey.Escape:
+                        {
+                            return;
+                        }
+                    case ConsoleKey.F10:
+                        {
+                            return;
+                        }
+                }
+                d.Files(f, side, true);
+            }
         }
     }
 }
