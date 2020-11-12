@@ -77,11 +77,10 @@ namespace NortonCommander
                         }
                     case ConsoleKey.C:
                         {
-                            
                             f[main_directory].GoTo("C");
                             d = new Draw();
                             d.FolderInfo(f);
-                            d.Files(f, !side, false);
+                            d.Files(f, !side, true);
                             break;
                         }
                     case ConsoleKey.D:
@@ -89,7 +88,7 @@ namespace NortonCommander
                             f[main_directory].GoTo("D");
                             d = new Draw();
                             d.FolderInfo(f);
-                            d.Files(f, !side, false);
+                            d.Files(f, !side, true);
                             break;
                         }
                     case ConsoleKey.E:
@@ -97,7 +96,7 @@ namespace NortonCommander
                             f[main_directory].GoTo("E");
                             d = new Draw();
                             d.FolderInfo(f);
-                            d.Files(f, !side, false);
+                            d.Files(f, !side, true);
                             break;
                         }
                     case ConsoleKey.H:
@@ -105,7 +104,7 @@ namespace NortonCommander
                             f[main_directory].GoTo("H");
                             d = new Draw();
                             d.FolderInfo(f);
-                            d.Files(f, !side, false);
+                            d.Files(f, !side, true);
                             break;
                         }
                     case ConsoleKey.Escape:
