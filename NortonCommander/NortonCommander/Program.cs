@@ -75,38 +75,24 @@ namespace NortonCommander
                             d.Files(f, !side, false);
                             break;
                         }
-                    case ConsoleKey.C:
+                    case ConsoleKey.F9:
                         {
-                            f[main_directory].GoTo("C");
+                            d = new Draw();
+                            string disc = d.DrawDiscChoise().ToUpper();
+                            f[main_directory].GoTo(disc);
                             d = new Draw();
                             d.FolderInfo(f);
                             d.Files(f, !side, true);
+                            Console.SetCursorPosition(0, 25);
+                            Console.ResetColor();
+                            Console.ForegroundColor = ConsoleColor.Black;
+                            Console.WriteLine("                                              ");
+                            Console.WriteLine("                                              ");
+                            Console.WriteLine("                                              ");
+
                             break;
                         }
-                    case ConsoleKey.D:
-                        {
-                            f[main_directory].GoTo("D");
-                            d = new Draw();
-                            d.FolderInfo(f);
-                            d.Files(f, !side, true);
-                            break;
-                        }
-                    case ConsoleKey.E:
-                        {
-                            f[main_directory].GoTo("E");
-                            d = new Draw();
-                            d.FolderInfo(f);
-                            d.Files(f, !side, true);
-                            break;
-                        }
-                    case ConsoleKey.H:
-                        {
-                            f[main_directory].GoTo("H");
-                            d = new Draw();
-                            d.FolderInfo(f);
-                            d.Files(f, !side, true);
-                            break;
-                        }
+                    
                     case ConsoleKey.Escape:
                         {
                             return;

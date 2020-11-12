@@ -11,8 +11,8 @@ namespace NortonCommander
     {
         public Draw()
         {
-            Console.SetWindowSize(80, 26);
-            Console.SetBufferSize(80, 26);
+            Console.SetWindowSize(80, 29);
+            Console.SetBufferSize(80, 29);
 
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -613,6 +613,7 @@ namespace NortonCommander
             }
         }
 
+        //public void DrawDiscChoise(int startX, int startY)
         public void DrawDiscChoise(int startX, int startY)
         {
             Console.SetCursorPosition(startX, startY);
@@ -635,8 +636,19 @@ namespace NortonCommander
             Console.WriteLine("                                      ");
 
             Console.ResetColor();
+        }
+        public string DrawDiscChoise()
+        {
+            Console.SetCursorPosition(0, 25);
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Enter letter of discs: C-D-F-G");
+            Console.ResetColor();
+            string disc = Console.ReadLine();
+            return disc;
 
         }
+
 
     }
 
