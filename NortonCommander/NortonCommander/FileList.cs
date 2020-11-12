@@ -29,6 +29,7 @@ namespace NortonCommander
             files.Sort();
             files.Insert(0, "..");
         }
+        
         public List<string> getFiles()
         {
             return files;
@@ -52,6 +53,10 @@ namespace NortonCommander
         public string getRoot()
         {
             return root;
+        }
+        public void setRoot(string discName)
+        {
+            root = discName + ":\\";
         }
         public void plusPos()
         {
@@ -98,6 +103,45 @@ namespace NortonCommander
                 if (!root.Substring(root.Length - 2).Equals(":\\"))
                 {
                     root = Directory.GetParent(root).ToString();
+                    Console.WriteLine("{0}", root);
+                    files = Directory.GetFiles(root).ToList<string>();
+                    directories = Directory.GetDirectories(root).ToList<string>();
+                    position = 0;
+                    foreach (var dir in directories)
+                    {
+                        files.Add(dir);
+                    }
+                    files.Sort();
+                    files.Insert(0, "..");
+                }
+            }
+            else if (directories.IndexOf(files[position]) != -1)
+            {
+                root = files[position];
+                Console.WriteLine("{0}", root);
+                files = Directory.GetFiles(root).ToList<string>();
+                directories = Directory.GetDirectories(root).ToList<string>();
+                position = 0;
+                foreach (var dir in directories)
+                {
+                    files.Add(dir);
+                }
+                files.Sort();
+                files.Insert(0, "..");
+            }
+            else
+            {
+                System.Diagnostics.Process.Start(files[position]);
+            }
+        }
+        public void GoTo(string discName)
+        {
+            if (files[position].Equals(".."))
+            {
+                if (!root.Substring(root.Length - 2).Equals(":\\"))
+                {
+                    root = discName + ":\\";
+                    //root = Directory.GetParent(root).ToString();
                     Console.WriteLine("{0}", root);
                     files = Directory.GetFiles(root).ToList<string>();
                     directories = Directory.GetDirectories(root).ToList<string>();

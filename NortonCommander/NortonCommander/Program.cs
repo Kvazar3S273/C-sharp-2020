@@ -75,6 +75,39 @@ namespace NortonCommander
                             d.Files(f, !side, false);
                             break;
                         }
+                    case ConsoleKey.C:
+                        {
+                            
+                            f[main_directory].GoTo("C");
+                            d = new Draw();
+                            d.FolderInfo(f);
+                            d.Files(f, !side, false);
+                            break;
+                        }
+                    case ConsoleKey.D:
+                        {
+                            f[main_directory].GoTo("D");
+                            d = new Draw();
+                            d.FolderInfo(f);
+                            d.Files(f, !side, false);
+                            break;
+                        }
+                    case ConsoleKey.E:
+                        {
+                            f[main_directory].GoTo("E");
+                            d = new Draw();
+                            d.FolderInfo(f);
+                            d.Files(f, !side, false);
+                            break;
+                        }
+                    case ConsoleKey.H:
+                        {
+                            f[main_directory].GoTo("H");
+                            d = new Draw();
+                            d.FolderInfo(f);
+                            d.Files(f, !side, false);
+                            break;
+                        }
                     case ConsoleKey.Escape:
                         {
                             return;

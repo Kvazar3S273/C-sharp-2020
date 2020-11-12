@@ -612,192 +612,88 @@ namespace NortonCommander
                 }
             }
         }
+
+        public void DrawDiscChoise(int startX, int startY)
+        {
+            Console.SetCursorPosition(startX, startY);
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("                                      ");
+            Console.SetCursorPosition(startX, startY + 1);
+            Console.Write("   ╔════════ ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("DRIVE LETTER");
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write(" ════════╗   ");
+            Console.SetCursorPosition(startX, startY + 2);
+            Console.WriteLine("   ║         Choose drive:        ║   ");
+            Console.SetCursorPosition(startX, startY + 3);
+            Console.WriteLine("   ║   C   D   E   F   G   H   I  ║   ");
+            Console.SetCursorPosition(startX, startY + 4);
+            Console.WriteLine("   ╚══════════════════════════════╝   ");
+            Console.SetCursorPosition(startX, startY + 5);
+            Console.WriteLine("                                      ");
+
+            Console.ResetColor();
+
+        }
+
+    }
+
+    public class Drives
+    {
+        public void ShowDrive(string name)
+        {
+            DriveInfo[] drives = DriveInfo.GetDrives();
+
+            int discNumber = 0;
+            switch (name)
+            {
+                case "c":
+                case "C":
+                    discNumber = 0;
+                    break;
+                case "d":
+                case "D":
+                    discNumber = 1;
+                    break;
+                case "e":
+                case "E":
+                    discNumber = 2;
+                    break;
+                case "f":
+                case "F":
+                    discNumber = 3;
+                    break;
+                case "g":
+                case "G":
+                    discNumber = 4;
+                    break;
+                //case "h":
+                //case "H":
+                //    discNumber = 5;
+                //    break;
+                //case "i":
+                //case "I":
+                //    discNumber = 6;
+                //    break;
+                default:
+                    Console.WriteLine("Wrong choice!");
+                    break;
+            }
+
+            Console.WriteLine($"Назва диска: {drives[discNumber].Name}");
+            Console.WriteLine($"Тип: {drives[discNumber].DriveType}");
+            if (drives[discNumber].IsReady)
+            {
+                Console.WriteLine($"Об\'єм диска: {drives[discNumber].TotalSize / 1024 / 1024 / 1024} Gb");
+                Console.WriteLine($"Доступно мiсця: {drives[discNumber].TotalFreeSpace / 1024 / 1024 / 1024} Gb");
+            }
+        }
+
     }
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//using System;
-//using System.Collections.Generic;
-//using System.Text;
-
-//namespace NortonCommander
-//{
-//    class Draw
-//    {
-//        public void Title()
-//        {
-//            Console.WriteLine("\n   The Total Commander, Version 1.00 Copyright (C) 2020 by Volodymyr Blonsky\n");
-//        }
-//        public void DrawOnceTable(int startX, int startY)
-//        {
-//            // 201 ╔        187  ╗
-//            // 205 ════ (4) 
-//            // 205 ═══  (3)
-//            // 205 ════════════  (12)
-//            // 186 ║    206 ╬     204 ╠      185 ╣  
-//            // 200 ╚    188 ╝
-//            // 209 ╤    207 ╧     199 ╟      182 ╢
-//            // 193 ┴    179 │     
-//            // 196 ──── (4)
-//            // 196 ─── (3)
-//            // 196 ──────────── (12)
-//            // ► Alt+16
-//            Console.BackgroundColor = ConsoleColor.DarkBlue;
-
-//            Console.SetCursorPosition(startX, startY);
-//            Console.WriteLine("╔════════════╤═════════╤════════╤══════╗");
-//            Console.SetCursorPosition(startX, startY+1);
-//            Console.Write("║    ");
-//            Console.ForegroundColor = ConsoleColor.Yellow;
-//            Console.Write("Name");
-//            Console.ForegroundColor = ConsoleColor.Cyan;
-//            Console.Write("    │   ");
-//            Console.ForegroundColor = ConsoleColor.Yellow;
-//            Console.Write("Size"); 
-//            Console.ForegroundColor = ConsoleColor.Cyan;
-//            Console.Write("  │  ");
-//            Console.ForegroundColor = ConsoleColor.Yellow;
-//            Console.Write("Date");
-//            Console.ForegroundColor = ConsoleColor.Cyan;
-//            Console.Write("  │ ");
-//            Console.ForegroundColor = ConsoleColor.Yellow;
-//            Console.Write("Time");
-//            Console.ForegroundColor = ConsoleColor.Cyan;
-//            Console.Write(" ║");
-
-//            for (int i = 2; i < 20; i++)
-//            {
-//                Console.SetCursorPosition(startX, startY + i);
-//                Console.WriteLine("║            │         │        │      ║");
-//            }
-//            Console.SetCursorPosition(startX, startY + 20);
-//            Console.WriteLine("╟────────────┴─────────┴────────┴──────╢");
-//            Console.SetCursorPosition(startX, startY + 21);
-//            Console.WriteLine("║                                      ║");
-//            Console.SetCursorPosition(startX, startY + 22);
-//            Console.WriteLine("╚══════════════════════════════════════╝");
-//        }
-//        public void DrawFooter()
-//        {
-//            Console.SetCursorPosition(0, 27);
-//            Console.ResetColor();
-//            Console.Write("1");
-//            Console.BackgroundColor = ConsoleColor.DarkCyan;
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.Write("Help  ");
-//            Console.ResetColor();
-//            Console.Write(" ");
-//            Console.Write("2");
-//            Console.BackgroundColor = ConsoleColor.DarkCyan;
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.Write("Menu  ");
-//            Console.ResetColor();
-//            Console.Write(" ");
-//            Console.Write("3");
-//            Console.BackgroundColor = ConsoleColor.DarkCyan;
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.Write("View  ");
-//            Console.ResetColor();
-//            Console.Write(" ");
-//            Console.Write("4");
-//            Console.BackgroundColor = ConsoleColor.DarkCyan;
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.Write("Edit  ");
-//            Console.ResetColor();
-//            Console.Write(" "); 
-//            Console.Write("5");
-//            Console.BackgroundColor = ConsoleColor.DarkCyan;
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.Write("Copy  ");
-//            Console.ResetColor();
-//            Console.Write(" ");
-//            Console.Write("6");
-//            Console.BackgroundColor = ConsoleColor.DarkCyan;
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.Write("RenMov");
-//            Console.ResetColor();
-//            Console.Write(" ");
-//            Console.Write("7");
-//            Console.BackgroundColor = ConsoleColor.DarkCyan;
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.Write("Mkdir ");
-//            Console.ResetColor();
-//            Console.Write(" ");
-//            Console.Write("8");
-//            Console.BackgroundColor = ConsoleColor.DarkCyan;
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.Write("Delete");
-//            Console.ResetColor();
-//            Console.Write(" ");
-//            Console.Write("9");
-//            Console.BackgroundColor = ConsoleColor.DarkCyan;
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.Write("PullDn");
-//            Console.ResetColor();
-//            Console.Write(" ");
-//            Console.Write("10");
-//            Console.BackgroundColor = ConsoleColor.DarkCyan;
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.Write("Quit  ");
-//            Console.ResetColor();
-//            Console.Write(" ");
-//        }
-
-//        public void DrawDiscChoise(int startX, int startY)
-//        {
-//            Console.SetCursorPosition(startX, startY);
-//            Console.BackgroundColor = ConsoleColor.Gray;
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.WriteLine("                                      ");
-//            Console.SetCursorPosition(startX, startY + 1);
-//            Console.Write("   ╔════════ ");
-//            Console.ForegroundColor = ConsoleColor.Red;
-//            Console.Write("DRIVE LETTER");
-//            Console.ForegroundColor = ConsoleColor.Black;
-//            Console.Write(" ════════╗   ");
-//            Console.SetCursorPosition(startX, startY + 2);
-//            Console.WriteLine("   ║         Choose drive:        ║   ");
-//            Console.SetCursorPosition(startX, startY + 3);
-//            Console.WriteLine("   ║   C   D   E   F   G   H   I  ║   "); 
-//            Console.SetCursorPosition(startX, startY + 4);
-//            Console.WriteLine("   ╚══════════════════════════════╝   ");
-//            Console.SetCursorPosition(startX, startY + 5);
-//            Console.WriteLine("                                      ");
-
-//            Console.ResetColor();
-
-//        }
-//    }
-//}
