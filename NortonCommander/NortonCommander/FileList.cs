@@ -29,7 +29,7 @@ namespace NortonCommander
             files.Sort();
             files.Insert(0, "..");
         }
-        
+
         public List<string> getFiles()
         {
             return files;
@@ -54,6 +54,25 @@ namespace NortonCommander
         {
             return root;
         }
+        //public string getFileName(List<string>files, int position)
+        //{
+        //    files = Directory.GetFiles(root).ToList<string>();
+        //    for (int i = 0; i < files.Count; i++)
+        //    {
+        //        if (files[i]==files[position])
+        //        return fileName;
+        //    }
+
+
+        //    directories = Directory.GetDirectories(root).ToList<string>();
+        //    position = 0;
+        //    foreach (var dir in directories)
+        //    {
+        //        files.Add(dir);
+        //    }
+
+
+        //}
         public void setRoot(string discName)
         {
             root = discName + ":\\";

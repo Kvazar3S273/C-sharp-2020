@@ -125,13 +125,13 @@ namespace NortonCommander
                         str = "Help  ";
                         break;
                     case 1:
-                        str = "UserMn";
+                        str = "      ";
                         break;
                     case 2:
-                        str = "View  ";
+                        str = "      ";
                         break;
                     case 3:
-                        str = "Edit  ";
+                        str = "      ";
                         break;
                     case 4:
                         str = "Copy  ";
@@ -140,13 +140,13 @@ namespace NortonCommander
                         str = "RenMov";
                         break;
                     case 6:
-                        str = "MkFold";
+                        str = "      ";
                         break;
                     case 7:
                         str = "Delete";
                         break;
                     case 8:
-                        str = "ConfMn";
+                        str = "Disc  ";
                         break;
                     case 9:
                         str = "Quit  ";
@@ -613,30 +613,6 @@ namespace NortonCommander
             }
         }
 
-        //public void DrawDiscChoise(int startX, int startY)
-        public void DrawDiscChoise(int startX, int startY)
-        {
-            Console.SetCursorPosition(startX, startY);
-            Console.BackgroundColor = ConsoleColor.Gray;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine("                                      ");
-            Console.SetCursorPosition(startX, startY + 1);
-            Console.Write("   ╔════════ ");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("DRIVE LETTER");
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write(" ════════╗   ");
-            Console.SetCursorPosition(startX, startY + 2);
-            Console.WriteLine("   ║         Choose drive:        ║   ");
-            Console.SetCursorPosition(startX, startY + 3);
-            Console.WriteLine("   ║   C   D   E   F   G   H   I  ║   ");
-            Console.SetCursorPosition(startX, startY + 4);
-            Console.WriteLine("   ╚══════════════════════════════╝   ");
-            Console.SetCursorPosition(startX, startY + 5);
-            Console.WriteLine("                                      ");
-
-            Console.ResetColor();
-        }
         public string DrawDiscChoise()
         {
             Console.SetCursorPosition(0, 25);
@@ -646,66 +622,29 @@ namespace NortonCommander
             Console.ResetColor();
             string disc = Console.ReadLine();
             return disc;
-
         }
 
-
-    }
-
-    public class Drives
-    {
-        public void ShowDrive(string name)
+        public void Copy(string fileName, string sourcePath, string targetPath)
         {
-            DriveInfo[] drives = DriveInfo.GetDrives();
-
-            int discNumber = 0;
-            switch (name)
+            string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+            string destFile = System.IO.Path.Combine(targetPath, fileName);
+            System.IO.Directory.CreateDirectory(targetPath);
+            System.IO.File.Copy(sourceFile, destFile, true);
+            if (System.IO.Directory.Exists(sourcePath))
             {
-                case "c":
-                case "C":
-                    discNumber = 0;
-                    break;
-                case "d":
-                case "D":
-                    discNumber = 1;
-                    break;
-                case "e":
-                case "E":
-                    discNumber = 2;
-                    break;
-                case "f":
-                case "F":
-                    discNumber = 3;
-                    break;
-                case "g":
-                case "G":
-                    discNumber = 4;
-                    break;
-                //case "h":
-                //case "H":
-                //    discNumber = 5;
-                //    break;
-                //case "i":
-                //case "I":
-                //    discNumber = 6;
-                //    break;
-                default:
-                    Console.WriteLine("Wrong choice!");
-                    break;
+                string[] files = System.IO.Directory.GetFiles(sourcePath);
+
+                foreach (string s in files)
+                {
+                    fileName = System.IO.Path.GetFileName(s);
+                    destFile = System.IO.Path.Combine(targetPath, fileName);
+                    System.IO.File.Copy(s, destFile, true);
+                }
             }
-
-            Console.WriteLine($"Назва диска: {drives[discNumber].Name}");
-            Console.WriteLine($"Тип: {drives[discNumber].DriveType}");
-            if (drives[discNumber].IsReady)
+            else
             {
-                Console.WriteLine($"Об\'єм диска: {drives[discNumber].TotalSize / 1024 / 1024 / 1024} Gb");
-                Console.WriteLine($"Доступно мiсця: {drives[discNumber].TotalFreeSpace / 1024 / 1024 / 1024} Gb");
+                Console.WriteLine("Source path does not exist!");
             }
         }
-
     }
 }
-
-
-
-
