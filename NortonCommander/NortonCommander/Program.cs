@@ -78,23 +78,24 @@ namespace NortonCommander
                     case ConsoleKey.F5:
                         {
                             d = new Draw();
-                            d.Files(f, side, true);
-                            d.FileInfo(f[main_directory], true);
-                            Console.SetCursorPosition(0, 25);
-                            int pos = f[main_directory].getPos();
-                            Console.WriteLine(pos);
-                            string fileName = Path.GetFileName(f[main_directory].ToString());
-
-                            Console.WriteLine(fileName);
-                            string sourcePath = f[main_directory].getRoot();
-                            Console.WriteLine(sourcePath);
-                            //d.Copy(fileName,sourcePath,"G:\\");
+                            
+                            // Темп провірка
+                            //d.Files(f, side, true);
+                            //Console.SetCursorPosition(0, 25);
+                            //int pos = f[main_directory].getPos();
+                            //Console.WriteLine(pos);
+                            //string fileName = Path.GetFileName(f[main_directory].ToString());
+                            //Console.WriteLine(fileName);
+                            //string sourcePath = f[main_directory].getRoot();
+                            //Console.WriteLine(sourcePath);
                             break;
                         }
                     case ConsoleKey.F9:
                         {
+                            d = new Draw();
                             string disc = d.DrawDiscChoise().ToUpper();
                             f[main_directory].GoTo(disc);
+                            d = new Draw();
                             d.FolderInfo(f);
                             d.Files(f, !side, true);
                             Console.SetCursorPosition(0, 25);
