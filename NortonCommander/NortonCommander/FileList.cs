@@ -16,8 +16,8 @@ namespace NortonCommander
 
         public FileList()
         {
-            root = Directory.GetCurrentDirectory();
-            //root = "D:\\";
+            //root = Directory.GetCurrentDirectory();
+            root = "D:\\";
             files = Directory.GetFiles(root).ToList<string>();
             directories = Directory.GetDirectories(root).ToList<string>();
             position = 0;
@@ -150,7 +150,10 @@ namespace NortonCommander
             }
             else
             {
-                System.Diagnostics.Process.Start(files[position]);
+                var startInfo = new System.Diagnostics.ProcessStartInfo();
+                startInfo.FileName = files[position];
+                startInfo.UseShellExecute = true;
+                System.Diagnostics.Process.Start(startInfo);
             }
         }
         public void GoTo(string discName)
@@ -189,7 +192,10 @@ namespace NortonCommander
             }
             else
             {
-                System.Diagnostics.Process.Start(files[position]);
+                var startInfo = new System.Diagnostics.ProcessStartInfo();
+                startInfo.FileName = files[position];
+                startInfo.UseShellExecute = true;
+                System.Diagnostics.Process.Start(startInfo);
             }
         }
     }
