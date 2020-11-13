@@ -81,11 +81,12 @@ namespace NortonCommander
 
                             // Темп провірка
                             d.Files(f, side, true);
+                            d.FileInfo(f[main_directory], true);
+
                             Console.SetCursorPosition(0, 25);
                             int pos = f[main_directory].getPos();
                             Console.WriteLine(pos);
-                            string fileName = Path.GetFileName(f[main_directory].ToString());
-                            Console.WriteLine(fileName);
+                            
                             string sourcePath = f[main_directory].getRoot();
                             Console.WriteLine(sourcePath);
                             break;
